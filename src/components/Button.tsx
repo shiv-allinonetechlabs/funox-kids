@@ -35,27 +35,6 @@ const sizeStyles = {
   md: 'px-8 py-3 text-base rounded-2xl gap-3',
 } as const;
 
-const sparkles = [
-  { emoji: '✨', pos: '-top-4 -right-4', delay: '0s', scale: '1.2' },
-  {
-    emoji: '⭐',
-    pos: '-bottom-2 -left-3',
-    delay: '0.1s',
-    scale: '0.9',
-  },
-  {
-    emoji: '🌟',
-    pos: '-top-3 -left-4',
-    delay: '0.15s',
-    scale: '1.1',
-  },
-  {
-    emoji: '✨',
-    pos: '-bottom-4 -right-2',
-    delay: '0.2s',
-    scale: '0.8',
-  },
-];
 
 const Button = React.memo(
   React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -112,28 +91,6 @@ const Button = React.memo(
           >
             {children}
           </span>
-
-          {/* Hover Sparkles Burst */}
-          <div className="pointer-events-none absolute inset-0 z-20">
-            {sparkles.map((sparkle, i) => (
-              <div
-                key={i}
-                className={cn(
-                  'absolute scale-0 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100',
-                  sparkle.pos
-                )}
-                style={{
-                  transitionDelay: sparkle.delay,
-                  transform: `scale(${sparkle.scale}) rotate(${i * 45}deg)`,
-                }}
-              >
-                <span className="absolute inset-0 animate-ping rounded-full bg-yellow-300/20" />
-                <span className="group-hover:animate-wiggle relative block text-lg drop-shadow-sm">
-                  {sparkle.emoji}
-                </span>
-              </div>
-            ))}
-          </div>
 
           {/* Bottom Shine/Glow Effect */}
           <div className="bg-primary-shadow/40 absolute inset-0 -z-10 translate-y-3 rounded-2xl opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-100" />

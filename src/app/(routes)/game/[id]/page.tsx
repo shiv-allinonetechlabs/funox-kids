@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { allGames } from '@/constants';
-import { SITE_NAME, SITE_URL } from '@/constants';
+import { SITE_NAME, SITE_URL, allGames } from '@/constants';
 
 import GameDetailsClient from './GameDetailsClient';
 
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     game.description?.substring(0, 160) ||
     `Play ${game.game_name} on ${SITE_NAME}!`;
   const canonicalUrl = `${SITE_URL}/game/${id}`;
-
+  console.log('game details', game);
   return {
     title,
     description,

@@ -1,3 +1,4 @@
+import { imgGame } from '@/assets/images';
 import { Metadata } from 'next';
 
 import { SITE_NAME, SITE_URL } from '@/constants';
@@ -29,11 +30,20 @@ export function generatePageMetadata(path: string, _params?: any): Metadata {
       title,
       description,
       url: canonicalUrl,
+      images: [
+        {
+          url: imgGame.src,
+          width: 1200,
+          height: 630,
+          alt: SITE_NAME,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [imgGame.src],
     },
   };
 }

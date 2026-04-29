@@ -66,7 +66,8 @@ export default function ScrollToTop() {
           height="42"
           rx="12"
           fill="none"
-          stroke="var(--color-primary-shadow)"
+          stroke="var(--color-primary)"
+          strokeOpacity="0.1"
           strokeWidth="3.5"
         />
         <rect
@@ -76,19 +77,13 @@ export default function ScrollToTop() {
           height="42"
           rx="12"
           fill="none"
-          stroke="url(#badge-grad)"
+          stroke="var(--color-primary)"
           strokeWidth="3.5"
           strokeDasharray="168"
           strokeDashoffset={168 - (168 * scrollProgress) / 100}
           strokeLinecap="round"
           className="transition-all duration-300"
         />
-        <defs>
-          <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--color-primary)" />
-            <stop offset="100%" stopColor="var(--color-secondary)" />
-          </linearGradient>
-        </defs>
       </svg>
 
       {/* Center Icon Section */}

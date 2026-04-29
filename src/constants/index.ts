@@ -1,7 +1,7 @@
 export const gamesData = {
   game: {
     game_name: 'Coloring Book',
-    game_id: 'f2a150b4-02a1-468a-aca8-ab7b2610478f',
+    game_id: 'coloring-book',
     emoji: '🎨',
     p4_d_link:
       'https://developers.poki.com/code-this-lab/games/f2a150b4-02a1-468a-aca8-ab7b2610478f',
@@ -21,7 +21,7 @@ export const gamesData = {
   relatedGames: [
     {
       game_name: 'Crashy Cat',
-      game_id: '60783d39-1df9-48ed-8a00-8fac7957bf75',
+      game_id: 'crashy-cat',
       emoji: '🐱',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/60783d39-1df9-48ed-8a00-8fac7957bf75',
@@ -38,7 +38,7 @@ export const gamesData = {
     },
     {
       game_name: 'Happy Slushie',
-      game_id: '21c81514-f8d0-4ddc-b930-da61445c1517',
+      game_id: 'happy-slushie',
       emoji: '🍹',
       p4_d_link:
         'https://developers.poki.com/marketjs/games/21c81514-f8d0-4ddc-b930-da61445c1517',
@@ -55,7 +55,7 @@ export const gamesData = {
     },
     {
       game_name: 'Funny Pet Rescue',
-      game_id: '0576b48c-1221-40dc-8a9c-10c7b7543a7a',
+      game_id: 'funny-pet-rescue',
       emoji: '🐾',
       p4_d_link:
         'https://developers.poki.com/go-panda-games-studio/games/0576b48c-1221-40dc-8a9c-10c7b7543a7a',
@@ -73,7 +73,7 @@ export const gamesData = {
     },
     {
       game_name: 'BeeLine',
-      game_id: '5f092ae6-33a0-4b72-9523-58cec60ca663',
+      game_id: 'beeline',
       emoji: '🐝',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/5f092ae6-33a0-4b72-9523-58cec60ca663',
@@ -90,7 +90,7 @@ export const gamesData = {
     },
     {
       game_name: 'Sweety Memory',
-      game_id: 'bd45a718-4eb5-4dfa-80c7-78747deac999',
+      game_id: 'sweety-memory',
       emoji: '🍬',
       p4_d_link:
         'https://developers.poki.com/code-this-lab/games/bd45a718-4eb5-4dfa-80c7-78747deac999',
@@ -108,7 +108,7 @@ export const gamesData = {
     },
     {
       game_name: 'Animal Connection',
-      game_id: 'b8f9bf25-f503-4fc3-9e57-1973e426e2cc',
+      game_id: 'animal-connection',
       emoji: '🦊',
       p4_d_link:
         'https://developers.poki.com/ravalmatic/games/b8f9bf25-f503-4fc3-9e57-1973e426e2cc',
@@ -125,7 +125,7 @@ export const gamesData = {
     },
     {
       game_name: 'Snakes N Ladders',
-      game_id: '028889ac-99b7-4170-addc-76c749f698a9',
+      game_id: 'snakes-n-ladders',
       emoji: '🐍',
       p4_d_link:
         'https://developers.poki.com/ravalmatic/games/028889ac-99b7-4170-addc-76c749f698a9',
@@ -142,7 +142,7 @@ export const gamesData = {
     },
     {
       game_name: 'Funny Rescue Zookeeper',
-      game_id: 'b4ada3bc-edf7-444e-8e5f-813b543526f0',
+      game_id: 'funny-rescue-zookeeper',
       emoji: '🏥',
       p4_d_link:
         'https://developers.poki.com/go-panda-games-studio/games/b4ada3bc-edf7-444e-8e5f-813b543526f0',
@@ -160,7 +160,7 @@ export const gamesData = {
     },
     {
       game_name: 'Paint Blue',
-      game_id: '4b452332-8ee3-4b80-b8a7-42f402db58e4',
+      game_id: 'paint-blue',
       emoji: '🎨',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/4b452332-8ee3-4b80-b8a7-42f402db58e4',
@@ -177,7 +177,7 @@ export const gamesData = {
     },
     {
       game_name: 'Pixel Skate',
-      game_id: '309b01d3-aa3c-4afc-8c56-07b80c1da702',
+      game_id: 'pixel-skate',
       emoji: '🛹',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/309b01d3-aa3c-4afc-8c56-07b80c1da702',
@@ -194,7 +194,7 @@ export const gamesData = {
     },
     {
       game_name: 'Draw Parking',
-      game_id: '29ab5d67-e5be-4bca-9618-3781ef481c94',
+      game_id: 'draw-parking',
       emoji: '🚗',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/29ab5d67-e5be-4bca-9618-3781ef481c94',

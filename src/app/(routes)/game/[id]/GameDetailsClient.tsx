@@ -227,100 +227,113 @@ const GameDetailsClient = ({ game }: Props) => {
         </div>
       </div>
 
-      <div className="from-primary/5 via-card-bg to-secondary/5 relative mb-12 overflow-hidden rounded-3xl bg-linear-to-br p-6 shadow-2xl md:p-8">
-        <div className="absolute top-4 left-4 animate-bounce text-3xl">🌟</div>
-        <div className="absolute top-6 right-6 animate-pulse text-2xl">🎈</div>
-        <div className="absolute bottom-6 left-10 animate-bounce text-2xl delay-100">
-          🎪
-        </div>
-        <div className="absolute right-4 bottom-4 animate-pulse text-3xl delay-200">
-          🎯
-        </div>
+      <div className="from-white via-white/80 to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative mb-12 overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br p-5 sm:p-6 md:p-10 shadow-sm ring-1 ring-black/5 dark:border-white/10 dark:ring-white/5">
+        {/* Decorative background shapes - softer and more subtle */}
+        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
+        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
-        <div className="relative z-10">
-          <div className="mb-6">
-            <div className="mb-3 inline-block">
-              <span className="rounded-full bg-linear-to-r from-yellow-400 to-orange-500 px-4 py-2 text-sm font-bold text-white shadow-lg">
-                ⭐ Featured Game
+        <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex-1 text-center sm:text-left">
+            <div className="mb-4 flex flex-wrap items-center justify-center sm:justify-start gap-3">
+              <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-orange-500 px-3 py-1 sm:px-4 sm:py-1.5 text-[9px] sm:text-[10px] font-black text-white shadow-sm ring-2 ring-white dark:ring-white/20">
+                <span className="animate-wiggle inline-block">⭐</span> FEATURED GAME
               </span>
+              {game.status && (
+                <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-emerald-500 px-3 py-1 sm:px-4 sm:py-1.5 text-[9px] sm:text-[10px] font-black text-white shadow-sm ring-2 ring-white dark:ring-white/20">
+                  ✅ {game.status}
+                </span>
+              )}
             </div>
 
-            <h1 className="font-baloo from-primary via-secondary to-primary bg-linear-to-r bg-clip-text text-3xl font-extrabold text-transparent drop-shadow-sm md:text-4xl lg:text-5xl">
+            <h1 className="font-baloo from-primary via-secondary to-primary mb-2 bg-linear-to-r bg-clip-text text-3xl sm:text-4xl font-black text-transparent drop-shadow-sm md:text-5xl lg:text-6xl">
               {game.game_name}
             </h1>
 
-            <p className="text-deepblue/60 mt-2 text-base font-semibold md:text-lg">
-              Published by{' '}
-              <span className="text-purple-600">{game.developer_team}</span>
+            <p className="text-deepblue/40 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-sm sm:text-base font-bold md:text-lg dark:text-white/40">
+              <span>Made with ❤️ by</span>
+              <span className="bg-purple-100 px-3 py-1 rounded-full text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+                {game.developer_team}
+              </span>
             </p>
-
-            {game.status && (
-              <div className="mt-3">
-                <span className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-emerald-500 px-4 py-1.5 text-xs font-bold text-white shadow-lg">
-                  <span className="text-sm">✅</span>
-                  {game.status}
-                </span>
-              </div>
-            )}
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {metaItems.map((item, index) => (
-              <div
-                key={index}
-                className="group border-glass-border bg-card-bg relative overflow-hidden rounded-2xl border-2 p-3 shadow-md transition-all hover:-translate-y-1 hover:scale-105 hover:shadow-lg"
-              >
+          {/* Quick Hero Stats - Optimized for Mobile Grid */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-4">
+            {metaItems
+              .filter((item) => ['Players', 'Level'].includes(item.label))
+              .map((item, index) => (
                 <div
-                  className={`absolute top-0 left-0 h-1 w-full bg-linear-to-r ${item.color}`}
-                />
-
-                <div className="absolute -right-1 -bottom-1 text-3xl opacity-10 transition-opacity group-hover:opacity-20">
-                  {item.emoji}
-                </div>
-
-                <div className="relative z-10 flex flex-col items-center gap-2 text-center">
-                  <div
-                    className={`bg-linear-to-br ${item.color} flex size-10 items-center justify-center rounded-xl shadow-sm transition-transform group-hover:rotate-6`}
-                  >
-                    <Image
-                      src={item.icon}
-                      alt={item.label}
-                      className="size-5 brightness-0 invert"
-                    />
+                  key={index}
+                  className="group relative flex flex-col items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] border-2 border-white bg-white p-4 sm:px-6 sm:py-4 shadow-sm transition-all hover:-translate-y-1 hover:scale-105 hover:shadow-md dark:border-white/10 dark:bg-card-bg"
+                >
+                  <div className={`bg-linear-to-br ${item.color} mb-2 sm:mb-3 flex size-11 sm:size-14 items-center justify-center rounded-xl sm:rounded-2xl shadow-sm ring-2 sm:ring-4 ring-white transition-transform group-hover:rotate-6 dark:ring-white/10`}>
+                    <Image src={item.icon} alt={item.label} className="size-5 sm:size-6 brightness-0 invert" />
                   </div>
+                  <span className="text-deepblue/30 text-[8px] sm:text-[10px] font-black tracking-widest uppercase dark:text-white/20">
+                    {item.label}
+                  </span>
+                  <span className="text-foreground text-xs sm:text-sm font-black text-center">
+                    {item.value}
+                  </span>
+                  <div className="absolute -top-1 -right-1 text-xl sm:text-2xl opacity-0 transition-opacity group-hover:opacity-100">
+                    {item.emoji}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
 
-                  <div>
-                    <span className="text-deepblue/50 mb-0.5 block text-[9px] font-bold tracking-wide uppercase">
+        {/* Secondary Info - Wrapped for Mobile */}
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 border-t border-gray-100 pt-8 dark:border-white/10">
+          <span className="text-deepblue/30 text-[10px] font-black tracking-widest uppercase text-center sm:text-left sm:mr-2 dark:text-white/20">
+            Game Details:
+          </span>
+          <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
+            {metaItems
+              .filter((item) => !['Players', 'Level'].includes(item.label))
+              .map((item, index) => (
+                <div
+                  key={index}
+                  className="group flex items-center gap-2.5 rounded-full border-2 border-white bg-white/50 px-3 py-1.5 sm:px-4 sm:py-2 shadow-xs transition-all hover:bg-white hover:shadow-sm dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                >
+                  <div className={`bg-linear-to-br ${item.color} flex size-6 sm:size-7 items-center justify-center rounded-full shadow-xs ring-2 ring-white dark:ring-white/10`}>
+                    <Image src={item.icon} alt={item.label} className="size-3 sm:size-3.5 brightness-0 invert" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-deepblue/40 text-[7px] sm:text-[8px] font-black tracking-widest uppercase leading-none dark:text-white/30">
                       {item.label}
                     </span>
-                    <span className="text-foreground block text-xs font-extrabold">
+                    <span className="text-foreground text-[9px] sm:text-[10px] font-extrabold leading-none">
                       {item.value}
                     </span>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
+
+        {/* Floating elements - hidden on very small screens to avoid clutter */}
+        <div className="absolute top-8 right-8 animate-bounce text-3xl select-none opacity-20 dark:opacity-10 hidden sm:block">🎈</div>
+        <div className="absolute bottom-8 right-16 animate-pulse text-3xl select-none opacity-20 delay-500 dark:opacity-10 hidden sm:block">🎯</div>
       </div>
 
-      <div className="group from-primary/5 via-card-bg to-secondary/5 relative mb-12 overflow-hidden rounded-3xl bg-linear-to-br p-8 shadow-xl sm:p-10">
-        <div className="absolute top-6 right-6 text-4xl opacity-20">📖</div>
-        <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-linear-to-br from-yellow-200/30 to-orange-200/30 blur-2xl" />
-        <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-linear-to-br from-purple-200/30 to-pink-200/30 blur-2xl" />
+      <div className="group from-white via-white/80 to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative mb-12 overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br p-6 sm:p-10 shadow-sm ring-1 ring-black/5 dark:border-white/10 dark:ring-white/5">
+        <div className="absolute top-6 right-6 text-4xl opacity-10 dark:opacity-5">📖</div>
+        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
+        <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
         <div className="relative z-10 grid gap-8 lg:grid-cols-3 lg:items-start">
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-3">
-              <div className="h-2 w-12 rounded-full bg-linear-to-r from-purple-500 to-pink-500 shadow-lg" />
-              <span className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl font-bold text-transparent">
+              <div className="h-2 w-12 rounded-full bg-linear-to-r from-purple-500 to-pink-500 shadow-sm" />
+              <span className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl sm:text-3xl font-black text-transparent">
                 About This Game
               </span>
-              <span className="text-2xl">🎯</span>
+              <span className="text-2xl animate-bounce-slow">🎯</span>
             </div>
 
             <div
-              className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none font-medium"
+              className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none font-medium leading-relaxed dark:text-white/70"
               dangerouslySetInnerHTML={{ __html: formattedDescription }}
             />
           </div>
@@ -328,15 +341,15 @@ const GameDetailsClient = ({ game }: Props) => {
           {game.thumbnail && (
             <div className="lg:col-span-1">
               <div className="sticky top-8">
-                <div className="border-glass-border relative overflow-hidden rounded-2xl border-4 shadow-2xl">
+                <div className="border-4 border-white bg-white rounded-3xl overflow-hidden shadow-sm dark:border-white/10 dark:bg-card-bg">
                   <Image
                     src={game.thumbnail}
                     alt={game.game_name}
                     width={400}
                     height={400}
-                    className="object-cover"
+                    className="object-cover w-full transition-transform duration-700 hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-purple-500/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-purple-500/10 to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -348,7 +361,7 @@ const GameDetailsClient = ({ game }: Props) => {
         <div className="mt-16">
           <SectionHeading title="More Awesome Games" icon="🎮" />
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
             {relatedGames.map((relatedGame) => (
               <GameCard
                 key={relatedGame.game_id}

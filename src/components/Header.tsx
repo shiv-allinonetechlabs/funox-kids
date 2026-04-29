@@ -32,14 +32,27 @@ const Header = () => {
           href={allRoute.home}
           className="group flex items-center gap-3 transition-all duration-300 hover:scale-105"
         >
-          <span className="font-baloo text-deepblue text-2xl font-black md:text-3xl">
-            Fun<span className="text-primary">ox</span>
+          <span className="font-baloo text-deepblue flex items-center text-2xl font-black md:text-3xl dark:text-white">
+            <span>
+              Fun<span className="text-primary">ox</span>
+            </span>
+            <span className="ml-2 flex items-center gap-0.5 text-secondary">
+              {'Kids'.split('').map((letter, i) => (
+                <span
+                  key={i}
+                  className="animate-bounce inline-block"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  {letter}
+                </span>
+              ))}
+            </span>
           </span>
         </Link>
 
         {/* Action Button Section */}
         <div className="flex items-center">
-          <Link href={allRoute.home}>
+          <Link href="game/happy-slushie">
             <Button variant="primary">PLAY NOW 🚀</Button>
           </Link>
         </div>
