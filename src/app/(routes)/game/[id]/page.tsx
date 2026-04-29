@@ -22,7 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     game.description?.substring(0, 160) ||
     `Play ${game.game_name} on ${SITE_NAME}!`;
   const canonicalUrl = `${SITE_URL}/game/${id}`;
-  console.log('game details', game);
   return {
     title,
     description,

@@ -15,6 +15,5 @@ export {
   iconScreen,
   iconUsers,
   img404,
-  imgGame
+  imgGame,
 };
-

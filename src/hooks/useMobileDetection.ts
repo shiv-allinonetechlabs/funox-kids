@@ -10,8 +10,11 @@ export const useIsMobile = (breakpoint: number = 768): boolean => {
 
   useEffect(() => {
     const checkMobile = () => {
-      const mobileUA = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const mobileWidth = typeof window !== 'undefined' && window.innerWidth < breakpoint;
+      const mobileUA =
+        typeof navigator !== 'undefined' &&
+        /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const mobileWidth =
+        typeof window !== 'undefined' && window.innerWidth < breakpoint;
       setIsMobile(!!(mobileUA || mobileWidth));
     };
 

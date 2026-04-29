@@ -1,6 +1,6 @@
-import { imgGame } from '@/assets/images';
 import { Metadata } from 'next';
 
+import { imgGame } from '@/assets/images';
 import { SITE_NAME, SITE_URL } from '@/constants';
 import { STATIC_PAGE_METADATA } from '@/constants/pageMetadata';
 

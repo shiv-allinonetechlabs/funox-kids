@@ -8,16 +8,16 @@ const Loader = () => {
       <div className="relative flex flex-col items-center">
         {/* Animated Background Glow */}
         <div className="bg-primary/30 absolute inset-0 scale-150 animate-pulse rounded-full blur-3xl" />
-        
+
         {/* Main Bouncing Container */}
         <div className="relative z-10 flex flex-col items-center gap-4 md:gap-6">
           <div className="relative">
             {/* Spinning Rings */}
-            <div className="border-primary absolute -inset-2 animate-spin rounded-full border-3 border-t-transparent border-dashed opacity-40 md:-inset-4 md:border-4" />
-            <div className="border-secondary absolute -inset-4 animate-spin-slow rounded-full border-3 border-b-transparent border-dashed opacity-30 md:-inset-8 md:border-4" />
+            <div className="border-primary absolute -inset-2 animate-spin rounded-full border-3 border-dashed border-t-transparent opacity-40 md:-inset-4 md:border-4" />
+            <div className="border-secondary animate-spin-slow absolute -inset-4 rounded-full border-3 border-dashed border-b-transparent opacity-30 md:-inset-8 md:border-4" />
 
             {/* Bouncing Character/Icon */}
-            <div className="animate-bounce-slow flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-4xl shadow-xl shadow-primary/20 ring-4 ring-primary/10 md:h-20 md:w-20 md:rounded-3xl md:text-5xl">
+            <div className="animate-bounce-slow shadow-primary/20 ring-primary/10 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-4xl shadow-xl ring-4 md:h-20 md:w-20 md:rounded-3xl md:text-5xl">
               <span className="animate-wiggle inline-block">🎮</span>
             </div>
           </div>
@@ -54,7 +54,7 @@ const Loader = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 2}s`,
-                transform: `rotate(${Math.random() * 360}deg)`
+                transform: `rotate(${Math.random() * 360}deg)`,
               }}
             >
               {['✨', '⭐', '🎈', '🌈'][i % 4]}
@@ -65,8 +65,12 @@ const Loader = () => {
 
       <style jsx>{`
         @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(-360deg);
+          }
         }
         .animate-spin-slow {
           animation: spin-slow 4s linear infinite;

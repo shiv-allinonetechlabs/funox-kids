@@ -36,11 +36,11 @@ const Header = () => {
             <span>
               Fun<span className="text-primary">ox</span>
             </span>
-            <span className="ml-2 flex items-center gap-0.5 text-secondary">
+            <span className="text-secondary ml-2 flex items-center gap-0.5">
               {'Kids'.split('').map((letter, i) => (
                 <span
                   key={i}
-                  className="animate-bounce inline-block"
+                  className="inline-block animate-bounce"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {letter}
