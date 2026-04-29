@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import CustomCursor from '@/components/CustomCursor';
 import ScrollToTop from '@/components/ScrollToTop';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 import NetworkGuard from '@/providers/NetworkGuard';
 
 interface AppProvidersProps {
@@ -10,10 +12,13 @@ interface AppProvidersProps {
 
 export default function AppProviders({ children }: AppProvidersProps) {
   return (
-    <NetworkGuard>
-      <CustomCursor />
-      <ScrollToTop />
-      {children}
-    </NetworkGuard>
+    <ThemeProvider>
+      <NetworkGuard>
+        <CustomCursor />
+        <ScrollToTop />
+        <ThemeSwitcher />
+        {children}
+      </NetworkGuard>
+    </ThemeProvider>
   );
 }

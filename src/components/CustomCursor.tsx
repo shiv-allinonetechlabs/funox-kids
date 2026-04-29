@@ -56,17 +56,17 @@ const CustomCursor = () => {
       // Update Follower (Outer Circle)
       follower.style.transform = `translate3d(${followerX.current}px, ${followerY.current}px, 0) translate(-50%, -50%) scale(${hoverScale * clickScale})`;
       follower.style.backgroundColor = isHovering.current
-        ? 'rgba(0, 156, 255, 0.15)'
+        ? 'hsla(var(--hue), 100%, 50%, 0.15)'
         : 'transparent';
       follower.style.borderColor = isHovering.current
-        ? 'rgba(0, 156, 255, 0.6)'
-        : 'rgba(0, 156, 255, 0.3)';
+        ? 'hsla(var(--hue), 100%, 50%, 0.6)'
+        : 'hsla(var(--hue), 100%, 50%, 0.3)';
       follower.style.borderStyle = isHovering.current ? 'solid' : 'dashed';
 
       // Update Main Cursor (Star)
       cursor.style.transform = `translate3d(${mouseX.current}px, ${mouseY.current}px, 0) translate(-50%, -50%) scale(${innerHoverScale * clickScale}) rotate(${rotation}deg)`;
       cursor.style.filter = isHovering.current
-        ? 'hue-rotate(15deg) drop-shadow(0 0 15px rgba(0, 156, 255, 0.9))'
+        ? 'hue-rotate(15deg) drop-shadow(0 0 15px hsla(var(--hue), 100%, 50%, 0.9))'
         : 'none';
 
       requestAnimationFrame(animate);
@@ -109,7 +109,7 @@ const CustomCursor = () => {
         <div className="relative flex h-full w-full items-center justify-center">
           <svg
             viewBox="0 0 24 24"
-            className="fill-primary relative z-10 h-full w-full drop-shadow-[0_2px_8px_rgba(0,156,255,0.4)]"
+            className="fill-primary relative z-10 h-full w-full drop-shadow-[0_2px_8px_hsla(var(--hue),100%,50%,0.4)]"
           >
             <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
           </svg>

@@ -1,11 +1,10 @@
-import { Metadata } from 'next';
 import InnerBanner from '@/components/InnerBanner';
+import { allRoute } from '@/constants/allRoutes';
+import { generatePageMetadata } from '@/utils/generatePageMetadata';
 
-export const metadata: Metadata = {
-  title: 'Terms of Use | Funox Kids',
-  description:
-    'Read our Terms of Use to understand the rules and guidelines for playing on Funox Kids. We aim to keep our platform a safe and fun place for everyone!',
-};
+export async function generateMetadata() {
+  return generatePageMetadata(allRoute.termsOfUse);
+}
 
 const TermsOfUse = () => {
   return (
@@ -17,10 +16,10 @@ const TermsOfUse = () => {
         gradientFrom="from-primary"
         gradientTo="to-secondary"
       />
-      <div className="relative overflow-hidden rounded-[32px] border-6 border-white bg-white/40 p-6 shadow-xl backdrop-blur-md md:p-12">
+      <div className="border-glass-border bg-glass-bg relative overflow-hidden rounded-[32px] border-6 p-6 shadow-xl backdrop-blur-md md:p-12">
         {/* Version Badge */}
-        <div className="mb-8 flex justify-end">
-          <span className="bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
+        <div className="mb-4 flex justify-end sm:mb-6 md:mb-8">
+          <span className="bg-accent-soft text-accent inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -31,7 +30,7 @@ const TermsOfUse = () => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z"
               />
             </svg>
             Version March 2021
@@ -40,14 +39,14 @@ const TermsOfUse = () => {
 
         <article className="max-w-none">
           <div className="space-y-10">
-            <section className="rounded-2xl border-2 border-white bg-white/50 p-6 shadow-sm">
-              <p className="text-deepblue text-lg leading-relaxed font-medium">
+            <section className="border-glass-border bg-card-bg rounded-2xl border-2 p-6 shadow-sm">
+              <p className="text-foreground text-base leading-relaxed font-medium sm:text-lg">
                 Welcome to Funox! We have made up a couple of rules (these{' '}
                 <span className="text-primary font-bold">Rules</span>) for
                 everyone under the age of 16 that uses our website. If you use
                 our website, these Rules apply to you.
               </p>
-              <p className="text-deepblue/70 mt-4">
+              <p className="text-muted mt-4">
                 Want to know more? Contact us at{' '}
                 <a
                   href="mailto:kids@funox.com"
@@ -88,16 +87,16 @@ const TermsOfUse = () => {
               ].map((rule, index) => (
                 <div
                   key={index}
-                  className="flex flex-col gap-4 rounded-2xl border-2 border-white bg-white/50 p-6 transition-all hover:bg-white md:flex-row md:items-start md:gap-6"
+                  className="border-glass-border bg-card-bg flex flex-col gap-4 rounded-2xl border-2 p-6 transition-all hover:bg-white/5 md:flex-row md:items-start md:gap-6"
                 >
-                  <div className="bg-primary/5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl">
+                  <div className="bg-primary/10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl">
                     {rule.emoji}
                   </div>
                   <div>
                     <h3 className="font-baloo text-deepblue m-0 text-xl font-bold">
                       {rule.title}
                     </h3>
-                    <p className="text-deepblue/70 mt-2 text-base leading-relaxed">
+                    <p className="text-muted mt-2 text-base leading-relaxed">
                       {rule.content}
                     </p>
                   </div>
@@ -105,7 +104,7 @@ const TermsOfUse = () => {
               ))}
             </div>
 
-            <div className="bg-linear-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 text-center">
+            <div className="from-primary/5 to-secondary/5 rounded-2xl bg-linear-to-br p-8 text-center">
               <p className="font-baloo text-deepblue text-xl font-bold">
                 Respect the rules, help us keep Funox fun! 😊
               </p>

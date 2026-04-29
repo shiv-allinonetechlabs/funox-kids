@@ -1,25 +1,70 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
+import { SITE_MASK_ICON, SITE_NAME, SITE_URL } from '@/constants';
 import { fontBaloo, fontPoppins } from '@/constants/fonts';
 import AppProviders from '@/providers/AppProviders';
 
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Funox Kids | Safe & Free Games for Children',
-    template: '%s | Funox Kids',
-  },
-  description:
-    'The ultimate safe playground for kids! Play hundreds of free, high-quality games in a secure and fun environment designed specifically for children.',
-  keywords: ['kids games', 'free games', 'safe games', 'online games for kids', 'educational games'],
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(SITE_URL),
+    applicationName: SITE_NAME,
+    title: {
+      default: 'Funox Kids | Safe & Free Games for Children',
+      template: `%s | ${SITE_NAME}`,
+    },
+    description:
+      'Welcome to Funox Kids, the safest and most magical playground on the web! Play hundreds of free, super-fun games, puzzles, and adventures designed just for you. No downloads, no worries—just pure fun for every child!',
+    keywords: [
+      'kids games',
+      'free games',
+      'safe games',
+      'online games for kids',
+      'educational games',
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+    referrer: 'strict-origin-when-cross-origin',
+    formatDetection: {
+      telephone: false,
+    },
+    // Note: canonical and alternates are defined by each page, not the layout
+    openGraph: {
+      type: 'website',
+      siteName: SITE_NAME,
+    },
+    // Icons defined only in <head> below with theme-aware media queries (no duplicate icons from metadata)
+    icons: {
+      other: [
+        {
+          rel: 'mask-icon',
+          url: SITE_MASK_ICON,
+          color: '#009cff',
+        },
+      ],
+    },
+  };
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#0b1220',
+  colorScheme: 'light dark',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"

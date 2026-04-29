@@ -20,10 +20,10 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-4 pt-4 md:px-10 md:pt-6">
+    <header className="sticky top-0 z-99 w-full px-4 pt-4 md:px-10 md:pt-6">
       <div
         className={cn(
-          'mx-auto flex max-w-7xl items-center justify-between rounded-[32px] border-2 border-white bg-white/70 p-2 pr-2 pl-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500',
+          'border-glass-border bg-glass-bg mx-auto flex max-w-7xl items-center justify-between rounded-[32px] border-2 p-2 pr-2 pl-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500',
           isScrolled ? 'shadow-primary/10 border-primary/10' : ''
         )}
       >
@@ -32,10 +32,6 @@ const Header = () => {
           href={allRoute.home}
           className="group flex items-center gap-3 transition-all duration-300 hover:scale-105"
         >
-          {/* <div className="bg-primary relative flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-lg transition-transform group-hover:rotate-12">
-            <span className="text-xl">🎮</span>
-            <div className="bg-primary/40 absolute inset-0 -z-10 rounded-xl blur-md transition-all group-hover:blur-lg" />
-          </div> */}
           <span className="font-baloo text-deepblue text-2xl font-black md:text-3xl">
             Fun<span className="text-primary">ox</span>
           </span>

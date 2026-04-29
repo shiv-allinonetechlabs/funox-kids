@@ -18,7 +18,7 @@ export default function GameError({
       {/* Prevent error pages from being indexed by search engines */}
       <meta name="robots" content="noindex" />
 
-      <div className="relative col-span-full mx-auto max-w-md overflow-hidden rounded-[40px] border-6 border-white bg-white/40 py-12 text-center shadow-2xl backdrop-blur-xl">
+      <div className="border-glass-border bg-glass-bg relative col-span-full mx-auto max-w-md overflow-hidden rounded-[40px] border-6 py-12 text-center shadow-2xl backdrop-blur-xl">
         {/* Ambient Background Decorations */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="bg-primary/10 absolute top-[-20%] left-[-10%] size-64 rounded-full blur-3xl" />

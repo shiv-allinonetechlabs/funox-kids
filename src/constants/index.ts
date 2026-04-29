@@ -2,6 +2,7 @@ export const gamesData = {
   game: {
     game_name: 'Coloring Book',
     game_id: 'f2a150b4-02a1-468a-aca8-ab7b2610478f',
+    emoji: '🎨',
     p4_d_link:
       'https://developers.poki.com/code-this-lab/games/f2a150b4-02a1-468a-aca8-ab7b2610478f',
     thumbail_link:
@@ -21,6 +22,7 @@ export const gamesData = {
     {
       game_name: 'Crashy Cat',
       game_id: '60783d39-1df9-48ed-8a00-8fac7957bf75',
+      emoji: '🐱',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/60783d39-1df9-48ed-8a00-8fac7957bf75',
       thumbail_link:
@@ -37,6 +39,7 @@ export const gamesData = {
     {
       game_name: 'Happy Slushie',
       game_id: '21c81514-f8d0-4ddc-b930-da61445c1517',
+      emoji: '🍹',
       p4_d_link:
         'https://developers.poki.com/marketjs/games/21c81514-f8d0-4ddc-b930-da61445c1517',
       thumbail_link:
@@ -53,6 +56,7 @@ export const gamesData = {
     {
       game_name: 'Funny Pet Rescue',
       game_id: '0576b48c-1221-40dc-8a9c-10c7b7543a7a',
+      emoji: '🐾',
       p4_d_link:
         'https://developers.poki.com/go-panda-games-studio/games/0576b48c-1221-40dc-8a9c-10c7b7543a7a',
       thumbail_link:
@@ -70,6 +74,7 @@ export const gamesData = {
     {
       game_name: 'BeeLine',
       game_id: '5f092ae6-33a0-4b72-9523-58cec60ca663',
+      emoji: '🐝',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/5f092ae6-33a0-4b72-9523-58cec60ca663',
       thumbail_link:
@@ -86,6 +91,7 @@ export const gamesData = {
     {
       game_name: 'Sweety Memory',
       game_id: 'bd45a718-4eb5-4dfa-80c7-78747deac999',
+      emoji: '🍬',
       p4_d_link:
         'https://developers.poki.com/code-this-lab/games/bd45a718-4eb5-4dfa-80c7-78747deac999',
       thumbail_link:
@@ -103,6 +109,7 @@ export const gamesData = {
     {
       game_name: 'Animal Connection',
       game_id: 'b8f9bf25-f503-4fc3-9e57-1973e426e2cc',
+      emoji: '🦊',
       p4_d_link:
         'https://developers.poki.com/ravalmatic/games/b8f9bf25-f503-4fc3-9e57-1973e426e2cc',
       thumbail_link:
@@ -119,6 +126,7 @@ export const gamesData = {
     {
       game_name: 'Snakes N Ladders',
       game_id: '028889ac-99b7-4170-addc-76c749f698a9',
+      emoji: '🐍',
       p4_d_link:
         'https://developers.poki.com/ravalmatic/games/028889ac-99b7-4170-addc-76c749f698a9',
       thumbail_link:
@@ -135,6 +143,7 @@ export const gamesData = {
     {
       game_name: 'Funny Rescue Zookeeper',
       game_id: 'b4ada3bc-edf7-444e-8e5f-813b543526f0',
+      emoji: '🏥',
       p4_d_link:
         'https://developers.poki.com/go-panda-games-studio/games/b4ada3bc-edf7-444e-8e5f-813b543526f0',
       thumbail_link:
@@ -152,6 +161,7 @@ export const gamesData = {
     {
       game_name: 'Paint Blue',
       game_id: '4b452332-8ee3-4b80-b8a7-42f402db58e4',
+      emoji: '🎨',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/4b452332-8ee3-4b80-b8a7-42f402db58e4',
       thumbail_link:
@@ -168,6 +178,7 @@ export const gamesData = {
     {
       game_name: 'Pixel Skate',
       game_id: '309b01d3-aa3c-4afc-8c56-07b80c1da702',
+      emoji: '🛹',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/309b01d3-aa3c-4afc-8c56-07b80c1da702',
       thumbail_link:
@@ -184,6 +195,7 @@ export const gamesData = {
     {
       game_name: 'Draw Parking',
       game_id: '29ab5d67-e5be-4bca-9618-3781ef481c94',
+      emoji: '🚗',
       p4_d_link:
         'https://developers.poki.com/qky-games/games/29ab5d67-e5be-4bca-9618-3781ef481c94',
       thumbail_link:
@@ -197,24 +209,11 @@ export const gamesData = {
       comment2: '',
       version_id: 'ae946a93-f254-4d7d-ac37-98f755c22884',
     },
-    {
-      game_name: 'Unicorns Birthday Surprise',
-      game_id: '5ba4c031-a66a-43f4-9595-7839806319e1',
-      p4_d_link:
-        'https://developers.poki.com/idea-studios/games/5ba4c031-a66a-43f4-9595-7839806319e1',
-      thumbail_link:
-        'https://img.poki-cdn.com/aef343504bbedc3926433732ef25f8af.png',
-      thumbnail:
-        'https://img.poki-cdn.com/aef343504bbedc3926433732ef25f8af.png',
-      developer_team: 'Idea Studios',
-      description:
-        'Unicorns Birtgday Surprise is a dress-up game created by Idea Studios. Today is the birthday of this beautiful unicorn! Help her prepare and make sure her day is perfect: makeup, clothes, food ... and of course, gifts!\r\n\r\nHow to play?\r\nUse your mouse cursor to select, drag, and move objects around.\r\n\r\nWho is the developer?\r\nUnicorns Birtgday Surprise was created by Idea Studios.',
-      status: 'Good to Go!',
-      comment: '',
-      comment2: '',
-      version_id: 'd1426d76-2f0e-4792-a96a-30a0c9b44a31',
-    },
   ],
 };
 
 export const allGames = [gamesData.game, ...gamesData.relatedGames];
+
+export const SITE_NAME = 'Funox Kids';
+export const SITE_URL = 'https://kids.funox.com';
+export const SITE_MASK_ICON = './icon.png';

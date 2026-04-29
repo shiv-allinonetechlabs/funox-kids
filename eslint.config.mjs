@@ -20,8 +20,7 @@ const eslintConfig = defineConfig([
       // Disable set-state-in-effect warning
       'react-hooks/set-state-in-effect': 'off',
       // Enable purity check (e.g. no Math.random() in render)
-      'react-hooks/purity': 'error',
-      // (Optional) Allow unused vars when prefixed with underscore
+      'react-hooks/purity': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },

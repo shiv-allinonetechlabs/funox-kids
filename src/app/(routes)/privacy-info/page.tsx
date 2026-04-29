@@ -1,12 +1,10 @@
-import { Metadata } from 'next';
-
 import InnerBanner from '@/components/InnerBanner';
+import { allRoute } from '@/constants/allRoutes';
+import { generatePageMetadata } from '@/utils/generatePageMetadata';
 
-export const metadata: Metadata = {
-  title: 'Privacy Info | Funox Kids',
-  description:
-    'Learn how we protect your privacy at Funox Kids. We keep your information safe so you can focus on playing and having fun!',
-};
+export async function generateMetadata() {
+  return generatePageMetadata(allRoute.privacyInfo);
+}
 
 const privacyItems = [
   {
@@ -52,10 +50,10 @@ const PrivacyInfo = () => {
         gradientTo="to-secondary"
       />
 
-      <div className="relative overflow-hidden rounded-[32px] border-6 border-white bg-white/40 p-6 shadow-xl backdrop-blur-md md:p-12">
+      <div className="border-glass-border bg-glass-bg relative overflow-hidden rounded-[32px] border-6 p-6 shadow-xl backdrop-blur-md md:p-12">
         {/* Version Badge */}
-        <div className="mb-8 flex justify-end">
-          <span className="bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
+        <div className="mb-4 flex justify-end sm:mb-6 md:mb-8">
+          <span className="bg-accent-soft text-accent inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -75,7 +73,7 @@ const PrivacyInfo = () => {
 
         <article className="max-w-none">
           <div className="space-y-12">
-            <p className="text-deepblue text-lg leading-relaxed font-medium">
+            <p className="text-foreground text-base leading-relaxed font-medium sm:text-lg">
               Hey you! Thanks for looking at our privacy info. We promise
               we&apos;ll keep it short and easy to understand.
             </p>
@@ -84,16 +82,16 @@ const PrivacyInfo = () => {
               {privacyItems.map((item, index) => (
                 <div
                   key={index}
-                  className="group relative flex flex-col gap-4 rounded-2xl border-2 border-white bg-white/50 p-6 transition-all hover:bg-white md:flex-row md:items-start md:gap-6"
+                  className="group border-glass-border bg-card-bg relative flex flex-col gap-4 rounded-2xl border-2 p-6 transition-all hover:bg-white/5 md:flex-row md:items-start md:gap-6"
                 >
-                  <div className="bg-primary/5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl transition-transform group-hover:scale-110">
+                  <div className="bg-primary/10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl transition-transform group-hover:scale-110">
                     {item.emoji}
                   </div>
                   <div>
                     <h3 className="font-baloo text-deepblue m-0 text-xl font-bold">
                       {item.q}
                     </h3>
-                    <p className="text-deepblue/70 mt-2 text-base leading-relaxed">
+                    <p className="text-muted mt-2 text-base leading-relaxed">
                       {item.a}
                     </p>
                   </div>

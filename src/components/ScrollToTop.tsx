@@ -44,7 +44,7 @@ export default function ScrollToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       suppressHydrationWarning
       className={cn(
-        'group fixed right-6 bottom-6 z-50 flex size-12 items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] ring-1 ring-black/5 transition-all duration-500 hover:scale-110 active:scale-90',
+        'group bg-card-bg ring-glass-border fixed right-6 bottom-6 z-50 flex size-12 items-center justify-center rounded-2xl shadow-lg ring-1 transition-all duration-500 hover:scale-110 active:scale-90',
         isVisible
           ? 'translate-y-0 opacity-100'
           : 'pointer-events-none translate-y-20 opacity-0'
@@ -52,7 +52,7 @@ export default function ScrollToTop() {
       aria-label="Scroll to top"
     >
       {/* Theme Background Glow */}
-      <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-primary/5 via-primary/5 to-deepblue/5 opacity-50" />
+      <div className="from-primary/5 via-primary/5 to-secondary/5 absolute inset-0 rounded-2xl bg-linear-to-br opacity-50" />
 
       {/* Precision Progress Border (Custom SVG Path) */}
       <svg
@@ -86,7 +86,7 @@ export default function ScrollToTop() {
         <defs>
           <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="var(--color-primary)" />
-            <stop offset="100%" stopColor="var(--color-deepblue)" />
+            <stop offset="100%" stopColor="var(--color-secondary)" />
           </linearGradient>
         </defs>
       </svg>
@@ -97,11 +97,11 @@ export default function ScrollToTop() {
           🚀
         </span>
         {/* Animated engine shadow */}
-        <div className="mt-[-2px] h-0.5 w-4 rounded-full bg-primary/20 blur-[1px] transition-all group-hover:w-2 group-hover:opacity-40" />
+        <div className="bg-primary/20 mt-[-2px] h-0.5 w-4 rounded-full blur-[1px] transition-all group-hover:w-2 group-hover:opacity-40" />
       </div>
 
       {/* Percentage Indicator (Tooltip) */}
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded-lg bg-gray-900 px-2 py-1 text-[9px] font-black text-white transition-all duration-300 group-hover:scale-100">
+      <div className="bg-card-bg border-glass-border text-foreground absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded-lg border px-2 py-1 text-[9px] font-black shadow-md transition-all duration-300 group-hover:scale-100">
         {Math.round(scrollProgress)}%
       </div>
     </button>

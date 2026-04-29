@@ -2,27 +2,28 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 import { allRoute } from '@/constants/allRoutes';
 
-const Footer = () => {
-  const companyLinks = [
-    { to: allRoute.parents, text: 'Parents' },
-    { to: allRoute.contact, text: 'Contact Us' },
-  ];
+const companyLinks = [
+  { to: allRoute.parents, text: 'Parents' },
+  { to: allRoute.contact, text: 'Contact Us' },
+];
 
-  const legalLinks = [
-    { to: allRoute.privacyInfo, text: 'Privacy Info' },
-    { to: allRoute.privacyStatementParents, text: 'Privacy Statement' },
-    { to: allRoute.termsOfUse, text: 'Terms of Use' },
-    { to: allRoute.cookieStatementParents, text: 'Cookie Statement' },
-  ];
+const legalLinks = [
+  { to: allRoute.privacyInfo, text: 'Privacy Info' },
+  { to: allRoute.privacyStatementParents, text: 'Privacy Statement' },
+  { to: allRoute.termsOfUse, text: 'Terms of Use' },
+  { to: allRoute.cookieStatementParents, text: 'Cookie Statement' },
+];
 
+const Footer = React.memo(() => {
   return (
     <footer className="relative w-full overflow-hidden pt-10 pb-4">
-      <div className="mx-auto max-w-7xl">
+      <div className="container">
         {/* 1. Safety Section (Poki Style) */}
-        <div className="relative mb-8 overflow-hidden rounded-[24px] border-2 border-white bg-white/80 p-5 shadow-[0_15px_40px_rgba(0,156,255,0.05)] backdrop-blur-xl transition-transform duration-500 hover:scale-[1.01] md:p-8">
+        <div className="border-glass-border bg-glass-bg relative mb-8 overflow-hidden rounded-[24px] border-2 p-5 shadow-[0_15px_40px_rgba(0,156,255,0.05)] backdrop-blur-xl transition-transform duration-500 hover:scale-[1.01] md:p-8">
           <div className="relative z-10 flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
             <div className="animate-bounce-slow relative h-16 w-16 shrink-0">
               <div className="bg-primary/20 absolute inset-0 animate-pulse rounded-full blur-xl" />
@@ -55,7 +56,7 @@ const Footer = () => {
         {/* 2. New Different Design: Split Blocks Layout */}
         <div className="flex flex-col gap-5 lg:flex-row">
           {/* Brand Info Block */}
-          <div className="from-primary to-deepblue hover:shadow-primary/20 flex flex-col justify-between rounded-[32px] bg-linear-to-br p-8 text-white shadow-xl transition-all duration-500 lg:w-1/3">
+          <div className="from-primary to-brand-blue hover:shadow-primary/20 flex flex-col justify-between rounded-[32px] bg-linear-to-br p-8 text-white shadow-xl transition-all duration-500 lg:w-1/3">
             <div>
               <Link href={allRoute.home} className="flex items-center gap-2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg">
@@ -86,7 +87,7 @@ const Footer = () => {
           {/* Links Grid Block */}
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:w-2/3">
             {/* Platform Links */}
-            <div className="hover:border-primary/20 rounded-[32px] border-2 border-gray-50 bg-white p-8 shadow-lg shadow-gray-100 transition-all duration-500">
+            <div className="hover:border-primary/20 bg-card-bg rounded-[32px] border-2 border-transparent p-8 shadow-lg shadow-black/5 transition-all duration-500">
               <h4 className="font-baloo text-deepblue mb-4 flex items-center gap-2 text-lg font-black">
                 <span className="bg-primary h-2 w-2 rounded-full" /> Company
               </h4>
@@ -108,7 +109,7 @@ const Footer = () => {
             </div>
 
             {/* Legal Links */}
-            <div className="hover:border-primary/20 rounded-[32px] border-2 border-gray-50 bg-white p-8 shadow-lg shadow-gray-100 transition-all duration-500">
+            <div className="hover:border-primary/20 bg-card-bg rounded-[32px] border-2 border-transparent p-8 shadow-lg shadow-black/5 transition-all duration-500">
               <h4 className="font-baloo text-deepblue mb-4 flex items-center gap-2 text-lg font-black">
                 <span className="bg-primary h-2 w-2 rounded-full" /> Support &
                 Legal
@@ -136,6 +137,8 @@ const Footer = () => {
       <div className="bg-secondary/5 absolute right-0 bottom-0 -z-10 h-72 w-72 rounded-full blur-[100px]" />
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

@@ -1,10 +1,9 @@
-import { Metadata } from 'next';
+import { allRoute } from '@/constants/allRoutes';
+import { generatePageMetadata } from '@/utils/generatePageMetadata';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | Funox Kids',
-  description:
-    "Have a question or feedback? We'd love to hear from you! Reach out to the Funox Kids team for support or any inquiries.",
-};
+export async function generateMetadata() {
+  return generatePageMetadata(allRoute.contact);
+}
 
 const Contact = () => {
   return (
@@ -21,17 +20,17 @@ const Contact = () => {
           🌈
         </div>
 
-        <div className="relative overflow-hidden rounded-[40px] border-6 border-white bg-white/40 p-4 shadow-2xl backdrop-blur-xl sm:p-6 md:p-10">
+        <div className="border-glass-border bg-glass-bg relative overflow-hidden rounded-[40px] border-6 p-4 shadow-2xl backdrop-blur-xl sm:p-6 md:p-10">
           {/* Inner Mesh Gradients */}
-          <div className="absolute -top-24 -right-24 h-[300px] w-[300px] rounded-full bg-primary/20 blur-[80px]" />
-          <div className="absolute -bottom-24 -left-24 h-[300px] w-[300px] rounded-full bg-secondary/20 blur-[80px]" />
+          <div className="bg-primary/20 absolute -top-24 -right-24 h-[300px] w-[300px] rounded-full blur-[80px]" />
+          <div className="bg-secondary/20 absolute -bottom-24 -left-24 h-[300px] w-[300px] rounded-full blur-[80px]" />
 
           <div className="relative z-10">
             {/* Header section */}
             <div className="text-center">
-              <div className="bg-primary/10 mb-4 inline-flex items-center gap-2 rounded-full border-2 border-white px-5 py-1.5 shadow-sm">
+              <div className="bg-accent-soft border-glass-border mb-4 inline-flex items-center gap-2 rounded-full border-2 px-5 py-1.5 shadow-sm">
                 <span className="text-lg">💬</span>
-                <span className="font-baloo text-primary text-xs font-bold tracking-wide uppercase">
+                <span className="font-baloo text-accent text-xs font-bold tracking-wide uppercase">
                   Let&apos;s Chat!
                 </span>
               </div>
@@ -43,7 +42,7 @@ const Contact = () => {
                 </span>
               </h1>
 
-              <p className="text-deepblue/70 mx-auto mt-4 max-w-xl text-base font-medium md:text-lg">
+              <p className="text-muted mx-auto mt-4 max-w-xl text-base font-medium md:text-lg">
                 We&apos;re here to help you and your little ones have the best
                 time on Funox Kids! Reach out to us anytime.
               </p>
@@ -52,14 +51,14 @@ const Contact = () => {
             {/* Grid Section */}
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {/* Email Card */}
-              <div className="group relative overflow-hidden rounded-3xl border-4 border-white bg-linear-to-br from-white/80 to-primary/5 p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div className="bg-primary mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-2xl text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+              <div className="group border-glass-border bg-card-bg relative overflow-hidden rounded-3xl border-4 p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="bg-primary shadow-primary/20 mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-2xl text-white shadow-lg transition-transform group-hover:scale-110">
                   📧
                 </div>
                 <h3 className="font-baloo text-deepblue text-xl font-bold">
                   Send an Email
                 </h3>
-                <p className="text-deepblue/60 mt-3 text-sm leading-relaxed font-medium">
+                <p className="text-muted mt-3 text-sm leading-relaxed font-medium">
                   Have tips or questions? Shoot us an email and we&apos;ll get
                   back to you within 24 hours!
                 </p>
@@ -72,14 +71,14 @@ const Contact = () => {
               </div>
 
               {/* Address Card */}
-              <div className="group relative overflow-hidden rounded-3xl border-4 border-white bg-linear-to-br from-white/80 to-secondary/5 p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div className="bg-secondary mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-2xl text-white shadow-lg shadow-secondary/20 transition-transform group-hover:scale-110">
+              <div className="group border-glass-border bg-card-bg relative overflow-hidden rounded-3xl border-4 p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div className="bg-secondary shadow-secondary/20 mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-2xl text-white shadow-lg transition-transform group-hover:scale-110">
                   🏠
                 </div>
                 <h3 className="font-baloo text-deepblue text-xl font-bold">
                   Our Headquarters
                 </h3>
-                <div className="text-deepblue/60 mt-3 space-y-0.5 text-sm font-medium">
+                <div className="text-muted mt-3 space-y-0.5 text-sm font-medium">
                   <p className="text-secondary font-bold">Funox Kids</p>
                   <p>Spui 10, 1012 WZ</p>
                   <p>Amsterdam, The Netherlands</p>

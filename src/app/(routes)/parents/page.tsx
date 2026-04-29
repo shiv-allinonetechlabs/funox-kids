@@ -1,11 +1,10 @@
-import { Metadata } from 'next';
 import InnerBanner from '@/components/InnerBanner';
+import { allRoute } from '@/constants/allRoutes';
+import { generatePageMetadata } from '@/utils/generatePageMetadata';
 
-export const metadata: Metadata = {
-  title: "Parents' Guide | Funox Kids",
-  description:
-    'Explore our comprehensive guide for parents. Learn about our commitment to safety, privacy, and providing a fun environment for your children.',
-};
+export async function generateMetadata() {
+  return generatePageMetadata(allRoute.parents);
+}
 
 const Parents = () => {
   return (
@@ -16,10 +15,10 @@ const Parents = () => {
         emoji="🧸"
       />
 
-      <div className="relative overflow-hidden rounded-[32px] border-6 border-white bg-white/40 p-6 shadow-xl backdrop-blur-md md:p-12">
+      <div className="border-glass-border bg-glass-bg relative overflow-hidden rounded-[32px] border-6 p-6 shadow-xl backdrop-blur-md md:p-12">
         {/* Version Badge */}
-        <div className="mb-8 flex justify-end">
-          <span className="bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
+        <div className="mb-4 flex justify-end sm:mb-6 md:mb-8">
+          <span className="bg-accent-soft text-accent inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -40,13 +39,13 @@ const Parents = () => {
         <article className="max-w-none">
           <div className="space-y-10">
             <section>
-              <p className="text-deepblue text-lg leading-relaxed font-medium">
+              <p className="text-foreground text-base leading-relaxed font-medium sm:text-lg">
                 Thanks for stopping by! We&apos;re as serious about kids&apos;
                 safety online as we are about them having fun - so we built
                 Funox Kids just for them. We sometimes receive questions about
                 our service and we&apos;ve put the most common ones below.
               </p>
-              <p className="text-deepblue/70 mt-4">
+              <p className="text-muted mt-4">
                 If you have another question, please get in touch at{' '}
                 <a
                   href="mailto:kids@funox.com"
@@ -79,7 +78,7 @@ const Parents = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border-2 border-white bg-white/50 p-6 shadow-sm transition-all hover:bg-white"
+                  className="border-glass-border bg-card-bg rounded-2xl border-2 p-6 shadow-sm transition-all hover:bg-white/5"
                 >
                   <h3 className="font-baloo text-deepblue text-xl font-bold">
                     {item.q}

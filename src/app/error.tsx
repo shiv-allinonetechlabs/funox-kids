@@ -33,8 +33,8 @@ export default function Error({
   return (
     <Fragment>
       <Header />
-      <main className="flex items-center justify-center px-4">
-        <div className="relative col-span-full mx-auto w-full max-w-md overflow-hidden rounded-[40px] border-6 border-white bg-white/40 py-10 text-center shadow-2xl backdrop-blur-xl sm:py-12">
+      <main className="mt-4 flex items-center justify-center px-4">
+        <div className="border-glass-border bg-glass-bg relative col-span-full mx-auto w-full max-w-md overflow-hidden rounded-[40px] border-6 py-12 text-center shadow-2xl backdrop-blur-xl">
           {/* Ambient Background Decorations */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="bg-primary/10 absolute top-[-20%] left-[-10%] size-64 rounded-full blur-3xl" />
@@ -48,7 +48,7 @@ export default function Error({
               <div className="bg-primary/20 absolute -inset-4 rounded-full opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
 
               {/* Icon Container */}
-              <div className="flex-center relative size-28 rounded-[32px] border-2 border-white bg-white/50 shadow-inner backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <div className="flex-center border-glass-border bg-card-bg relative size-28 rounded-[32px] border-2 shadow-inner backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                 <div className="text-5xl transition-opacity group-hover:opacity-80">
                   {is503 ? '🔧' : '⚠️'}
                 </div>
@@ -81,7 +81,7 @@ export default function Error({
                 onClick={() => {
                   window.location.href = '/';
                 }}
-                className="font-baloo text-deepblue flex h-12 w-full items-center justify-center rounded-2xl border-2 border-white bg-white/50 px-8 text-lg font-bold shadow-sm transition-all hover:scale-105 hover:bg-white active:scale-95 sm:w-auto"
+                className="font-baloo text-foreground border-glass-border bg-card-bg flex h-12 w-full items-center justify-center rounded-2xl border-2 px-8 text-lg font-bold shadow-sm transition-all hover:scale-105 hover:bg-white active:scale-95 sm:w-auto"
               >
                 Go Home 🏠
               </button>
