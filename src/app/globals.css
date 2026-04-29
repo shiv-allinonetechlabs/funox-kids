@@ -1,26 +1,201 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Enable dark mode variant for Tailwind v4 */
+@custom-variant dark (&&:where(.dark, .dark *));
+
+@theme {
+  /* Base colors */
+  --color-background: #f8fbff;
+  --color-foreground: #131313;
+
+  /* Brand colors */
+  --color-primary: #009cff;
+  --color-primary-shadow: #009cff4d;
+  --color-secondary: #ff4e8d;
+  --color-secondary-shadow: #ff4e8d4d;
+  --color-deepblue: #002a50;
+  --color-border-primary: #bfdbfe;
+  /* Skeleton */
+  --color-skeleton-bg: #e5eef9;
+  --color-skeleton-highlight: #d1e3f8;
+
+  /* Fonts */
+  --font-baloo: 'Baloo 2', cursive;
+  --font-poppins: 'Poppins', sans-serif;
+
+  /* Animations */
+  @keyframes floatUp {
+    0% { transform: translateY(120vh) scale(0); opacity: 0; }
+    20% { opacity: 0.3; }
+    80% { opacity: 0.3; }
+    100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+  }
+  @keyframes bubbleMove {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    5%, 90% { opacity: 0.2; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  --animate-float-bubble: floatUp 20s linear infinite;
+  --animate-bubble-ref: bubbleMove 40s linear infinite;
+  --animate-shimmer: shimmer 2s infinite linear;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer components {
+  .container {
+    @apply mx-auto px-4!;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .static-page-content {
+    @apply space-y-3 sm:space-y-4;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-baloo text-deepblue mb-2 leading-tight font-bold;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+    }
+
+    h2 {
+      @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+    }
+
+    h3 {
+      @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+    }
+
+    h4 {
+      @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+    }
+
+    h5 {
+      @apply text-sm sm:text-base md:text-lg lg:text-xl;
+    }
+
+    h6 {
+      @apply text-xs sm:text-sm md:text-base lg:text-lg;
+    }
+
+    p {
+      @apply text-foreground/80 text-sm leading-relaxed sm:text-base sm:leading-7;
+    }
+
+    ul,
+    ol {
+      @apply text-foreground/80 ml-4 space-y-1.5 text-sm leading-relaxed sm:ml-6 sm:space-y-2 sm:text-base sm:leading-7;
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    li {
+      @apply ml-1 sm:ml-2;
+    }
+
+    details {
+      @apply bg-primary/5 my-3 rounded-lg border border-white/40 p-3 shadow-md backdrop-blur-sm sm:my-4 sm:rounded-xl sm:p-4;
+    }
+
+    summary {
+      @apply font-baloo text-deepblue cursor-pointer font-semibold;
+
+      h3 {
+        @apply mt-0 inline transform-none normal-case;
+      }
+    }
+
+    details[open] summary {
+      @apply border-border-primary mb-2 border-b pb-2 sm:mb-3;
+    }
+
+    a {
+      @apply text-primary hover:text-primary/80 font-semibold break-words underline transition duration-300;
+    }
+
+    b,
+    strong {
+      @apply text-deepblue font-semibold;
+    }
+
+    i,
+    em {
+      @apply text-foreground/70;
+    }
+
+    img {
+      @apply my-3 max-w-full rounded-lg sm:my-4;
+    }
+  }
+  .skeleton {
+    @apply animate-shimmer relative overflow-hidden rounded-lg;
+    background: linear-gradient(
+      90deg,
+      var(--color-skeleton-bg) 25%,
+      var(--color-skeleton-highlight) 50%,
+      var(--color-skeleton-bg) 75%
+    );
+    background-size: 200% 100%;
   }
 }
 
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 1024px) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  details,
+  summary {
+    cursor: none;
+  }
+}
+
+::selection {
+  @apply bg-primary text-white;
+}
+
+button {
+  @apply cursor-pointer outline-none focus:shadow-none;
+}
+
+textarea,
+input {
+  @apply resize-none outline-none;
 }

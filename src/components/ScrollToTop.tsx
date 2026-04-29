@@ -1,0 +1,109 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+import { cn } from '@/lib/utils';
+
+/**
+ * Compact & Premium ScrollToTop component with a Holographic Badge design.
+ */
+export default function ScrollToTop() {
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as any });
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const totalScroll = scrollHeight - clientHeight;
+      const progress = totalScroll > 0 ? (scrollY / totalScroll) * 100 : 0;
+      setScrollProgress(progress);
+      setIsVisible(scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      suppressHydrationWarning
+      className={cn(
+        'group fixed right-6 bottom-6 z-50 flex size-12 items-center justify-center rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] ring-1 ring-black/5 transition-all duration-500 hover:scale-110 active:scale-90',
+        isVisible
+          ? 'translate-y-0 opacity-100'
+          : 'pointer-events-none translate-y-20 opacity-0'
+      )}
+      aria-label="Scroll to top"
+    >
+      {/* Theme Background Glow */}
+      <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-primary/5 via-primary/5 to-deepblue/5 opacity-50" />
+
+      {/* Precision Progress Border (Custom SVG Path) */}
+      <svg
+        className="absolute inset-0 h-full w-full -rotate-90"
+        viewBox="0 0 48 48"
+      >
+        <rect
+          x="3"
+          y="3"
+          width="42"
+          height="42"
+          rx="12"
+          fill="none"
+          stroke="var(--color-primary-shadow)"
+          strokeWidth="3.5"
+        />
+        <rect
+          x="3"
+          y="3"
+          width="42"
+          height="42"
+          rx="12"
+          fill="none"
+          stroke="url(#badge-grad)"
+          strokeWidth="3.5"
+          strokeDasharray="168"
+          strokeDashoffset={168 - (168 * scrollProgress) / 100}
+          strokeLinecap="round"
+          className="transition-all duration-300"
+        />
+        <defs>
+          <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--color-primary)" />
+            <stop offset="100%" stopColor="var(--color-deepblue)" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* Center Icon Section */}
+      <div className="relative z-10 flex flex-col items-center justify-center">
+        <span className="text-2xl transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-110">
+          🚀
+        </span>
+        {/* Animated engine shadow */}
+        <div className="mt-[-2px] h-0.5 w-4 rounded-full bg-primary/20 blur-[1px] transition-all group-hover:w-2 group-hover:opacity-40" />
+      </div>
+
+      {/* Percentage Indicator (Tooltip) */}
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded-lg bg-gray-900 px-2 py-1 text-[9px] font-black text-white transition-all duration-300 group-hover:scale-100">
+        {Math.round(scrollProgress)}%
+      </div>
+    </button>
+  );
+}
