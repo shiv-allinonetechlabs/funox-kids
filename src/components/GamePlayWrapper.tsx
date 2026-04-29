@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { RefObject, useEffect, useState } from 'react';
 
 import { useFullscreen } from '@/hooks/useFullscreen';
+import { useIsMobile } from '@/hooks/useMobileDetection';
 
 interface GamePlayWrapperProps {
   gameId: string;
@@ -22,26 +23,18 @@ const GamePlayWrapper = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const { isFullscreen, enterFullscreen } = useFullscreen(containerRef);
 
-  useEffect(() => {
-    // Check if it's mobile
-    const isMobile =
-      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-      window.innerWidth < 768;
+  const isMobile = useIsMobile();
 
+  useEffect(() => {
     // On Desktop, start playing immediately
     if (!isMobile) {
       // Use setTimeout to avoid synchronous setState warning during mount
       setTimeout(() => setIsPlaying(true), 0);
     }
-  }, []);
+  }, [isMobile]);
 
   const handlePlay = () => {
     setIsPlaying(true);
-
-    // Trigger Fullscreen ONLY ON MOBILE
-    const isMobile =
-      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-      window.innerWidth < 768;
 
     if (isMobile) {
       enterFullscreen();
@@ -121,7 +114,7 @@ const GamePlayWrapper = ({
             className={`h-full w-full rounded-2xl transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setIsLoaded(true)}
             sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
-            src={`https://games.poki.com/458768/${gameId}?tag=kids`}
+            src={`${process.env.NEXT_PUBLIC_FUNOX_BASE_URL}/${gameId}?tag=kids`}
           />
         </div>
       )}

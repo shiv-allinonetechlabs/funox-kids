@@ -20,10 +20,9 @@ const legalLinks = [
 
 const Footer = React.memo(() => {
   return (
-    <footer className="relative w-full overflow-hidden pt-10 pb-4 [content-visibility:auto] [contain-intrinsic-size:500px]">
+    <footer className="relative w-full overflow-hidden pt-10 pb-4 [contain-intrinsic-size:500px] [content-visibility:auto]">
       <div className="container">
-        {/* 1. Safety Section (Poki Style) */}
-        <div className="border-glass-border bg-glass-bg relative mb-8 overflow-hidden rounded-[24px] border-2 p-5 shadow-[0_15px_40px_rgba(0,156,255,0.05)] backdrop-blur-xl transition-transform duration-500 hover:scale-[1.01] md:p-8 will-change-transform">
+        <div className="border-glass-border bg-glass-bg relative mb-8 overflow-hidden rounded-[24px] border-2 p-5 shadow-[0_15px_40px_rgba(0,156,255,0.05)] backdrop-blur-xl transition-transform duration-500 will-change-transform hover:scale-[1.01] md:p-8">
           <div className="relative z-10 flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
             <div className="animate-bounce-slow relative h-16 w-16 shrink-0 will-change-transform">
               <div className="bg-primary/20 absolute inset-0 animate-pulse rounded-full blur-xl" />
@@ -53,10 +52,8 @@ const Footer = React.memo(() => {
             </Link>
           </div>
         </div>
-        {/* 2. New Different Design: Split Blocks Layout */}
         <div className="flex flex-col gap-5 lg:flex-row">
-          {/* Brand Info Block */}
-          <div className="from-primary to-brand-blue hover:shadow-primary/20 flex flex-col justify-between rounded-[32px] bg-linear-to-br p-8 text-white shadow-xl transition-all duration-500 lg:w-1/3 will-change-transform">
+          <div className="from-primary to-brand-blue hover:shadow-primary/20 flex flex-col justify-between rounded-[32px] bg-linear-to-br p-8 text-white shadow-xl transition-all duration-500 will-change-transform lg:w-1/3">
             <div>
               <Link href={allRoute.home} className="flex items-center gap-2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg">
@@ -68,7 +65,7 @@ const Footer = React.memo(() => {
                     {'Kids'.split('').map((letter, i) => (
                       <span
                         key={i}
-                        className="animate-bounce inline-block"
+                        className="inline-block animate-bounce"
                         style={{ animationDelay: `${i * 0.1}s` }}
                       >
                         {letter}
@@ -87,7 +84,7 @@ const Footer = React.memo(() => {
               {['🎈', '🌈', '⭐', '🚀'].map((emoji, i) => (
                 <div
                   key={i}
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-md transition-all hover:scale-110 hover:bg-white/20 will-change-transform"
+                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-md transition-all will-change-transform hover:scale-110 hover:bg-white/20"
                 >
                   <span className="text-base">{emoji}</span>
                 </div>
@@ -95,9 +92,7 @@ const Footer = React.memo(() => {
             </div>
           </div>
 
-          {/* Links Grid Block */}
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:w-2/3">
-            {/* Platform Links */}
             <div className="hover:border-primary/20 bg-card-bg rounded-[32px] border-2 border-transparent p-8 shadow-lg shadow-black/5 transition-all duration-500 will-change-transform">
               <h4 className="font-baloo text-deepblue mb-4 flex items-center gap-2 text-lg font-black">
                 <span className="bg-primary h-2 w-2 rounded-full" /> Company
@@ -109,7 +104,7 @@ const Footer = React.memo(() => {
                       href={link.to}
                       className="text-deepblue/60 hover:text-primary group flex items-center gap-2 text-xs font-black tracking-widest uppercase transition-colors"
                     >
-                      <span className="-translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100 will-change-transform">
+                      <span className="-translate-x-2 opacity-0 transition-all will-change-transform group-hover:translate-x-0 group-hover:opacity-100">
                         ➜
                       </span>
                       {link.text}
@@ -119,7 +114,6 @@ const Footer = React.memo(() => {
               </ul>
             </div>
 
-            {/* Legal Links */}
             <div className="hover:border-primary/20 bg-card-bg rounded-[32px] border-2 border-transparent p-8 shadow-lg shadow-black/5 transition-all duration-500 will-change-transform">
               <h4 className="font-baloo text-deepblue mb-4 flex items-center gap-2 text-lg font-black">
                 <span className="bg-primary h-2 w-2 rounded-full" /> Support &
@@ -132,7 +126,7 @@ const Footer = React.memo(() => {
                       href={link.to}
                       className="text-deepblue/60 hover:text-primary group flex items-center gap-2 text-xs font-black tracking-widest uppercase transition-colors"
                     >
-                      <span className="-translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100 will-change-transform">
+                      <span className="-translate-x-2 opacity-0 transition-all will-change-transform group-hover:translate-x-0 group-hover:opacity-100">
                         ➜
                       </span>
                       {link.text}

@@ -44,10 +44,10 @@ export default function ScrollToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       suppressHydrationWarning
       className={cn(
-        'group bg-card-bg ring-glass-border fixed right-6 bottom-6 z-50 flex size-12 items-center justify-center rounded-2xl shadow-lg ring-1 transition-all duration-500 hover:scale-110 active:scale-90',
+        'group bg-card-bg ring-glass-border relative z-50 flex w-10 md:w-12 items-center justify-center rounded-2xl shadow-lg ring-1 transition-all duration-500 hover:scale-110 active:scale-90',
         isVisible
-          ? 'translate-y-0 opacity-100'
-          : 'pointer-events-none translate-y-20 opacity-0'
+          ? 'h-10 md:h-12 mt-3 translate-y-0 opacity-100'
+          : 'pointer-events-none h-0 mt-0 translate-y-10 opacity-0 overflow-hidden'
       )}
       aria-label="Scroll to top"
     >

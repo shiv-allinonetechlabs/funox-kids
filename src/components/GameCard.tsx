@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 type GameCardProps = {
   title: string;
@@ -12,12 +13,10 @@ type GameCardProps = {
   priority?: boolean;
 };
 
-import React from 'react';
-
 const GameCard = React.memo(
   ({
     title,
-    category,
+    // category,
     image,
     href,
     emoji = '🎮',
@@ -28,13 +27,10 @@ const GameCard = React.memo(
     return (
       <Link
         href={href}
-        className="group border-glass-border bg-card-bg relative flex flex-col overflow-hidden rounded-2xl border-2 shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] md:rounded-3xl md:border-4 md:shadow-[0_15px_40px_rgba(0,0,0,0.08)] md:hover:-translate-y-4"
+        className="group relative flex flex-col overflow-hidden rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] md:rounded-3xl md:shadow-[0_15px_40px_rgba(0,0,0,0.08)] md:hover:-translate-y-4"
       >
-        {/* Top Gradient Stripe */}
-        <div className="via-primary to-deepblue h-1.5 w-full bg-linear-to-r from-yellow-400 md:h-2" />
-
         {/* Image Section */}
-        <div className="bg-primary/5 relative aspect-square overflow-hidden sm:aspect-4/3">
+        <div className="relative aspect-square overflow-hidden bg-white sm:aspect-4/3 dark:bg-gray-900">
           <Image
             src={image}
             alt={title}
@@ -62,14 +58,6 @@ const GameCard = React.memo(
               </div>
             </div>
           </div>
-
-          {/* Top Badges */}
-          <div className="absolute top-2 left-2 z-20 md:top-4 md:left-4">
-            <span className="text-primary border-glass-border bg-glass-bg flex items-center gap-1 rounded-full border px-2 py-1 text-[8px] font-black tracking-widest uppercase shadow-md backdrop-blur-md md:gap-1.5 md:px-3 md:py-1.5 md:text-[10px]">
-              <span className="text-[10px] md:text-xs">✨</span> {category}
-            </span>
-          </div>
-
           <div className="absolute top-2 right-2 z-20 md:top-4 md:right-4">
             <div className="flex items-center gap-1 rounded-full bg-black/40 px-2 py-1 text-[8px] font-bold text-white backdrop-blur-md md:gap-1.5 md:px-3 md:py-1.5 md:text-[10px]">
               <span className="flex h-1.5 w-1.5 animate-ping rounded-full bg-green-400 md:h-2 md:w-2" />
@@ -79,17 +67,17 @@ const GameCard = React.memo(
         </div>
 
         {/* Info Section */}
-        <div className="from-primary/5 via-card-bg to-secondary/5 relative flex grow flex-col justify-between overflow-hidden bg-linear-to-br p-3 transition-colors duration-500 md:p-6">
+        <div className="bg-card-bg from-primary/10 via-card-bg to-secondary/10 relative flex grow flex-col justify-between overflow-hidden border-t-4 border-white/50 bg-linear-to-br p-4 shadow-[inset_0_4px_12px_rgba(255,255,255,0.3)] transition-all duration-500 md:p-6 dark:border-white/5 dark:shadow-none">
           {/* Colorful Blobs for Kid-Friendly Aesthetic */}
-          <div className="absolute -top-10 -left-10 h-24 w-24 rounded-full bg-linear-to-br from-yellow-200/50 to-orange-200/50 opacity-60 blur-2xl transition-all duration-700 group-hover:scale-150" />
-          <div className="absolute -right-10 -bottom-10 h-24 w-24 rounded-full bg-linear-to-br from-purple-200/50 to-pink-200/50 opacity-60 blur-2xl transition-all duration-700 group-hover:scale-150" />
+          <div className="absolute -top-10 -left-10 h-24 w-24 rounded-full bg-linear-to-br from-yellow-200/40 to-orange-200/40 opacity-50 blur-2xl transition-all duration-700 group-hover:scale-150" />
+          <div className="absolute -right-10 -bottom-10 h-24 w-24 rounded-full bg-linear-to-br from-purple-200/40 to-pink-200/40 opacity-50 blur-2xl transition-all duration-700 group-hover:scale-150" />
 
           <div className="relative z-10">
             <div className="flex items-center justify-between gap-1 md:gap-2">
               <h3 className="font-baloo group-hover:text-primary text-foreground line-clamp-1 text-base font-black transition-colors duration-300 md:text-2xl">
                 {title}
               </h3>
-              <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-white/50 text-sm shadow-sm backdrop-blur-sm transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 md:size-10 md:rounded-xl md:text-xl dark:border dark:border-white/10 dark:bg-white/10">
+              <div className="bg-primary/20 flex size-7 shrink-0 items-center justify-center rounded-lg text-sm transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 md:size-10 md:rounded-xl md:text-xl">
                 {emoji}
               </div>
             </div>

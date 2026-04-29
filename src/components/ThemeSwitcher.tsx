@@ -3,22 +3,132 @@
 import { useEffect, useState } from 'react';
 
 import { useTheme } from '@/contexts/ThemeContext';
+import { useIsMobile } from '@/hooks/useMobileDetection';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { cn } from '@/lib/utils';
+
+const MagicClock: React.FC = () => {
+  const [time, setTime] = useState<Date | null>(null);
+  const { theme, hue } = useTheme();
+  const darkMode = theme === 'dark';
+
+  useEffect(() => {
+    setTime(new Date());
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!time) return null;
+
+  const hours = time.getHours();
+  const minutes = time.getMinutes().toString().padStart(2, '0');
+  const seconds = time.getSeconds().toString().padStart(2, '0');
+
+  let greeting = 'Hello Kiddo! 🌟';
+  let icon = '🎒';
+
+  if (hours >= 5 && hours < 12) {
+    icon = '☀️';
+    greeting = 'Morning, Sunshine!';
+  } else if (hours >= 12 && hours < 17) {
+    icon = '🍕';
+    greeting = 'Yummy Playtime!';
+  } else if (hours >= 17 && hours < 20) {
+    icon = '🌆';
+    greeting = 'Evening Fun!';
+  } else {
+    icon = '🌙';
+    greeting = 'Magic Dreams!';
+  }
+
+  return (
+    <div
+      className={cn(
+        'group mb-6 flex items-center gap-4 rounded-[24px] border-4 p-4 transition-all duration-700',
+        'border-white bg-white/40 shadow-md backdrop-blur-md',
+        'dark:border-white/10 dark:bg-white/5 dark:shadow-none'
+      )}
+      style={{
+        boxShadow: darkMode
+          ? `0 10px 30px -10px hsla(${hue}, 100%, 50%, 0.2), inset 0 0 20px hsla(${hue}, 100%, 50%, 0.05)`
+          : `0 10px 25px -5px hsla(${hue}, 100%, 50%, 0.1), inset 0 0 20px white`,
+      }}
+    >
+      {/* 3D Icon Box */}
+      <div
+        className={cn(
+          'relative flex size-14 shrink-0 items-center justify-center rounded-2xl border-2 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3',
+          'border-white bg-white shadow-[0_4px_0_0_#e2e8f0]',
+          'dark:border-white/10 dark:bg-white/10 dark:shadow-none'
+        )}
+      >
+        <div className="absolute inset-0 bg-linear-to-br from-white/40 to-transparent opacity-50" />
+        <span
+          className="animate-bounce text-2xl"
+          style={{ animationDuration: '3s' }}
+        >
+          {icon}
+        </span>
+      </div>
+
+      <div className="flex flex-col justify-center">
+        <div className="flex items-baseline gap-1.5">
+          <span
+            className="font-baloo text-3xl leading-none font-black tracking-tighter transition-all duration-500 group-hover:scale-105"
+            style={{
+              color: `hsl(${hue}, 100%, ${darkMode ? '70%' : '50%'})`,
+              textShadow: darkMode
+                ? `0 0 15px hsla(${hue}, 100%, 50%, 0.3)`
+                : `2px 2px 0px white, 3px 3px 0px hsla(${hue}, 100%, 50%, 0.1)`,
+            }}
+          >
+            {time.getHours() % 12 || 12}:{minutes}
+          </span>
+          <div className="flex flex-col leading-none">
+            <span
+              className="text-[10px] font-black uppercase opacity-60 transition-colors duration-500"
+              style={{
+                color: `hsl(${hue}, 100%, ${darkMode ? '75%' : '35%'})`,
+              }}
+            >
+              {hours >= 12 ? 'PM' : 'AM'}
+            </span>
+            <span
+              className="font-mono text-[9px] font-bold opacity-40 transition-colors duration-500"
+              style={{
+                color: `hsl(${hue}, 100%, ${darkMode ? '80%' : '40%'})`,
+              }}
+            >
+              :{seconds}
+            </span>
+          </div>
+        </div>
+        <span
+          className="mt-0.5 text-[11px] font-black tracking-widest uppercase transition-colors duration-500"
+          style={{
+            color: `hsl(${hue}, 100%, ${darkMode ? '85%' : '35%'})`,
+            opacity: 0.8,
+          }}
+        >
+          {greeting}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const ThemeSwitcher: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [isMagic, setIsMagic] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const { theme, setTheme, hue, setHue } = useTheme();
   const darkMode = theme === 'dark';
+  const isMobile = useIsMobile();
+
+  const containerRef = useOutsideClick(() => setOpen(false));
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (!isMobile) setOpen(false);
+  }, [isMobile]);
 
   const triggerMagic = () => {
     setIsMagic(true);
@@ -32,32 +142,47 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        'pointer-events-none fixed right-6 z-40 flex flex-col items-end gap-4 transition-all duration-500',
-        isScrolled ? 'bottom-24' : 'bottom-6'
+        'pointer-events-none relative z-40 flex flex-col items-end gap-4 transition-all duration-500'
       )}
     >
       {/* Magic Panel Popover */}
       <div
-        className={`shadow-premium w-80 origin-bottom-right overflow-hidden rounded-3xl border-6 border-white bg-white/40 p-6 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] dark:border-white/10 dark:bg-black/40 ${
+        className={`shadow-premium absolute right-0 bottom-full mb-4 w-[280px] origin-bottom-right overflow-hidden rounded-3xl border-4 border-white bg-white/40 p-4 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] md:w-80 md:p-6 dark:border-white/10 dark:bg-black/40 ${
           open
             ? 'pointer-events-auto scale-100 opacity-100'
             : 'pointer-events-none scale-50 opacity-0'
         }`}
       >
-        <div className="mb-6 text-center">
-          <div className="bg-primary/30 mx-auto mb-1 w-fit rounded-xl px-4 py-1.5 dark:bg-white/10">
-            <h2 className="font-baloo text-primary text-base font-black tracking-tight uppercase dark:text-white">
+        <MagicClock />
+        <div className="mb-4 text-center">
+          <div
+            className="mx-auto mb-2 w-fit rounded-xl px-4 py-1.5 shadow-sm transition-all duration-500"
+            style={{
+              background: darkMode
+                ? `linear-gradient(90deg, hsla(${hue}, 100%, 50%, 0.2), hsla(${hue}, 100%, 50%, 0.1))`
+                : `linear-gradient(90deg, hsla(${hue}, 100%, 50%, 0.9), hsla(${hue}, 100%, 40%, 0.8))`,
+              boxShadow: `0 4px 12px hsla(${hue}, 100%, 50%, ${darkMode ? '0.2' : '0.3'})`,
+            }}
+          >
+            <h2 className="font-baloo text-base font-black tracking-tight text-white uppercase">
               Magic Palette
             </h2>
           </div>
-          <p className="text-deepblue/40 text-[10px] font-black tracking-widest uppercase dark:text-white/40">
+          <p
+            className="text-[10px] font-black tracking-widest uppercase transition-colors duration-500"
+            style={{
+              color: `hsl(${hue}, 100%, ${darkMode ? '70%' : '30%'})`,
+              opacity: 0.6,
+            }}
+          >
             Customize your adventure! ✨
           </p>
         </div>
 
         {/* Preset Colors Grid */}
-        <div className="mb-8">
+        <div className="mb-4">
           <div className="grid grid-cols-4 gap-2.5">
             {[
               { h: 200, label: 'Hero', icon: '⚡' },
@@ -129,7 +254,7 @@ const ThemeSwitcher: React.FC = () => {
         </div>
 
         {/* Custom Magic Slider */}
-        <div className="mb-8 rounded-[24px] bg-gray-50/50 p-4 shadow-inner dark:bg-white/5">
+        <div className="mb-4 rounded-[20px] bg-gray-50/50 p-3 shadow-inner dark:bg-white/5">
           <div className="mb-3 flex items-center justify-between">
             <p className="text-deepblue/60 text-[10px] font-black tracking-widest uppercase dark:text-white/60">
               Custom Magic 🌈
@@ -151,13 +276,13 @@ const ThemeSwitcher: React.FC = () => {
         </div>
 
         {/* Bedtime Mode Toggle */}
-        <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50/50 p-4 dark:border-white/10 dark:bg-white/5">
+        <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50/50 p-3 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
                 <span className="text-sm">{darkMode ? '🌙' : '☀️'}</span>
-                <span className="text-deepblue/60 text-[10px] font-black tracking-widest uppercase dark:text-white/60">
-                  Bedtime Mode
+                <span className="text-deepblue/80 text-[10px] font-extrabold tracking-widest uppercase dark:text-white/80">
+                  {darkMode ? 'Bedtime Mode' : 'Sunlight Mode'}
                 </span>
               </div>
               <span className="mt-0.5 text-[9px] font-bold text-gray-400 italic">
@@ -169,7 +294,9 @@ const ThemeSwitcher: React.FC = () => {
 
             <button
               onClick={toggleTheme}
-              aria-label={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              aria-label={
+                darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+              }
               className={`group relative h-9 w-18 overflow-hidden rounded-full border-2 border-white shadow-inner transition-all duration-700 dark:border-white/20 ${
                 darkMode
                   ? 'bg-linear-to-br from-indigo-950 via-purple-900 to-indigo-900'
@@ -238,7 +365,7 @@ const ThemeSwitcher: React.FC = () => {
         }}
         aria-label={open ? 'Close Magic Palette' : 'Open Magic Palette'}
         className={cn(
-          'group shadow-premium pointer-events-auto relative flex size-12 items-center justify-center rounded-full transition-all duration-500 hover:scale-110 active:translate-y-[4px] active:scale-95 active:shadow-none',
+          'group shadow-premium pointer-events-auto relative flex size-10 items-center justify-center rounded-full transition-all duration-500 hover:scale-110 active:translate-y-[px] active:scale-95 active:shadow-none md:size-12',
           'bg-primary shadow-[0_6px_0_0_var(--color-primary-shadow)] hover:shadow-[0_8px_0_0_var(--color-primary-shadow)]',
           open && 'rotate-180'
         )}

@@ -1,30 +1,12 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 import { imgGame } from '@/assets/images';
 
 import Button from './Button';
 
 const Banner = () => {
-  const [greeting, setGreeting] = useState('Welcome Explorer! 🌟');
-
-  useEffect(() => {
-    const updateGreeting = () => {
-      const hour = new Date().getHours();
-      if (hour >= 5 && hour < 12) setGreeting('Good Morning 🌅');
-      else if (hour >= 12 && hour < 17) setGreeting('Good Afternoon ☀️');
-      else if (hour >= 17 && hour < 22) setGreeting('Good Evening 🌙');
-      else setGreeting('Hey Sleepyhead 😴');
-    };
-
-    updateGreeting();
-    // Update every minute to catch hour changes
-    const timer = setInterval(updateGreeting, 60000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="relative overflow-hidden">
       <div className="container">
@@ -39,7 +21,7 @@ const Banner = () => {
         </div>
 
         {/* Background floating decorations */}
-        <div className="shadow-3xl border-glass-border from-primary/5 via-card-bg to-secondary/5 relative overflow-hidden rounded-[40px] border-6 bg-linear-to-br p-6 md:p-10 lg:p-12">
+        <div className="shadow-3xl border-glass-border from-primary/10 via-primary/5 to-secondary/10 relative overflow-hidden rounded-[40px] border-6 bg-linear-to-br p-6 md:p-10 lg:p-12">
           {/* Internal Mesh Gradients - Optimized Blurs */}
           <div className="bg-primary/20 absolute -top-24 -right-24 h-[400px] w-[400px] rounded-full blur-[60px]" />
           <div className="bg-secondary/20 absolute -bottom-24 -left-24 h-[400px] w-[400px] rounded-full blur-[60px]" />
@@ -47,25 +29,25 @@ const Banner = () => {
 
           <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2">
             {/* Left Content */}
-            <div className="text-center lg:text-left">
-              <div className="border-glass-border bg-glass-bg inline-flex items-center gap-2 rounded-full border-2 px-4 py-1.5 shadow-sm backdrop-blur-md">
-                <span className="font-baloo text-primary text-xs font-bold tracking-wide uppercase">
-                  {greeting}
+            <div className="order-2 text-center lg:order-1 lg:text-left">
+              <div className="border-primary bg-primary/70 inline-flex items-center gap-2 rounded-full border px-3 py-2 shadow-sm backdrop-blur-md">
+                <span className="font-baloo text-xs font-bold tracking-wider text-white uppercase sm:text-xs">
+                  🚀 100% Free Games for Kids
                 </span>
               </div>
 
               <h1 className="font-baloo text-foreground mt-6 text-4xl leading-[1.1] font-black sm:text-5xl lg:text-6xl">
-                Play, Learn
+                Ready for an
                 <br />
                 <span className="from-primary via-secondary to-primary bg-linear-to-r bg-clip-text text-transparent drop-shadow-sm">
-                  & Level Up!
+                  Epic Adventure?
                 </span>
               </h1>
 
               <p className="text-deepblue/70 mt-5 max-w-xl text-base leading-relaxed font-medium md:text-lg">
-                Explore thousands of free, safe, and exciting games! From epic
-                adventures to brain-teasing puzzles, Funox Kids is the ultimate
-                playground for every young explorer.
+                Hey Kids! Dive into a world where you can be a hero, a racer, or
+                a master of puzzles! Everything here is 100% free, safe, and
+                just a click away. Let&apos;s play! 🎮🌟
               </p>
 
               <Link
@@ -77,7 +59,7 @@ const Banner = () => {
             </div>
 
             {/* Right Visual */}
-            <div className="relative flex items-center justify-center">
+            <div className="relative order-1 flex items-center justify-center lg:order-2">
               <div className="group border-glass-border bg-glass-bg relative flex h-64 w-64 items-center justify-center rounded-3xl border-4 shadow-2xl backdrop-blur-xl transition-all duration-700 will-change-transform hover:scale-110 hover:rotate-3 sm:h-80 sm:w-80">
                 {/* Floating Emojis in the circle */}
                 <span className="animate-bounce text-8xl will-change-transform sm:text-[130px]">

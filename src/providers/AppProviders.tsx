@@ -15,8 +15,10 @@ export default function AppProviders({ children }: AppProvidersProps) {
     <ThemeProvider>
       <NetworkGuard>
         <CustomCursor />
-        <ScrollToTop />
-        <ThemeSwitcher />
+        <div className="pointer-events-none fixed right-4 bottom-4 z-50 flex flex-col items-end md:right-6 md:bottom-6">
+          <ThemeSwitcher />
+          <ScrollToTop />
+        </div>
         {children}
       </NetworkGuard>
     </ThemeProvider>

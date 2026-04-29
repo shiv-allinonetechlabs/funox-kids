@@ -32,9 +32,8 @@ const variantStyles = {
 
 const sizeStyles = {
   sm: 'px-5 py-3 text-sm rounded-xl gap-2',
-  md: 'px-8 py-3 text-base rounded-2xl gap-3',
+  md: 'px-5 sm:px-8 py-2 sm:py-3 text-base rounded-xl md:rounded-xl md:rounded-2xl gap-3',
 } as const;
-
 
 const Button = React.memo(
   React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -64,7 +63,9 @@ const Button = React.memo(
           <div
             className={cn(
               'absolute inset-0 z-0 overflow-hidden',
-              sizeClasses.includes('rounded-xl') ? 'rounded-xl' : 'rounded-2xl'
+              sizeClasses.includes('rounded-xl')
+                ? 'rounded-xl'
+                : 'rounded-xl md:rounded-xl lg:rounded-2xl'
             )}
           >
             {/* Playful Shine Gradient */}
@@ -77,10 +78,10 @@ const Button = React.memo(
           </div>
 
           {/* Top Edge Highlight */}
-          <div className="pointer-events-none absolute inset-x-1.5 top-1 h-2 rounded-t-2xl bg-white/30 blur-[1px]" />
+          <div className="pointer-events-none absolute inset-x-1.5 top-1 h-2 rounded-t-xl bg-white/30 blur-[1px] md:rounded-t-2xl" />
 
           {/* Inner Border Glow */}
-          <div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-white/20" />
+          <div className="pointer-events-none absolute inset-0 rounded-xl border-2 border-white/20 md:rounded-2xl" />
 
           {/* Content with Stronger, Sharper Shadow for maximum visibility */}
           <span
@@ -93,7 +94,7 @@ const Button = React.memo(
           </span>
 
           {/* Bottom Shine/Glow Effect */}
-          <div className="bg-primary-shadow/40 absolute inset-0 -z-10 translate-y-3 rounded-2xl opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-100" />
+          <div className="bg-primary-shadow/40 absolute inset-0 -z-10 translate-y-3 rounded-xl opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-100 md:rounded-2xl md:rounded-xl" />
         </button>
       );
     }

@@ -52,43 +52,43 @@ const GameDetailsClient = ({ game }: Props) => {
       icon: iconGame,
       label: 'Created By',
       value: game.developer_team,
-      emoji: '🎨',
-      color: 'from-pink-400 to-rose-500',
+      emoji: '👨‍💻',
+      color: 'from-rose-400 to-pink-600',
     },
     {
       icon: iconScreen,
       label: 'Play On',
       value: 'Web Browser',
-      emoji: '💻',
-      color: 'from-blue-400 to-cyan-500',
+      emoji: '🎮',
+      color: 'from-sky-400 to-blue-600',
     },
     {
       icon: iconUsers,
       label: 'Players',
       value: '1 Player',
-      emoji: '👦',
-      color: 'from-purple-400 to-violet-500',
+      emoji: '👫',
+      color: 'from-violet-400 to-purple-600',
     },
     {
       icon: iconClock,
       label: 'Play Time',
       value: 'Unlimited Fun',
-      emoji: '⏰',
-      color: 'from-yellow-400 to-orange-500',
+      emoji: '⚡',
+      color: 'from-amber-400 to-orange-600',
     },
     {
       icon: iconDiamond,
       label: 'Level',
       value: 'Easy Peasy',
-      emoji: '⭐',
-      color: 'from-green-400 to-emerald-500',
+      emoji: '🏆',
+      color: 'from-emerald-400 to-green-600',
     },
     {
       icon: iconGame,
       label: 'Type',
       value: 'Kids Games',
-      emoji: '🎮',
-      color: 'from-indigo-400 to-blue-500',
+      emoji: '🎈',
+      color: 'from-cyan-400 to-indigo-600',
     },
   ].filter((item) => item.value);
 
@@ -155,64 +155,9 @@ const GameDetailsClient = ({ game }: Props) => {
       {/* Game Iframe - Play Area */}
       <div className="border-glass-border from-primary/5 via-card-bg to-secondary/5 mb-8 overflow-hidden rounded-3xl border-4 bg-linear-to-br p-4 shadow-2xl">
         {/* Premium Game Header */}
-        <div className="border-glass-border bg-glass-bg mb-6 flex flex-col items-center justify-between gap-4 rounded-2xl border p-4 backdrop-blur-md md:flex-row">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <div className="absolute -inset-1 animate-ping rounded-full bg-pink-400 opacity-20" />
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-linear-to-br from-purple-500 to-pink-500 text-2xl text-white shadow-lg shadow-purple-200 transition-transform hover:scale-110 hover:rotate-6">
-                {game.emoji || '🎮'}
-              </div>
-            </div>
-            <div>
-              <h2 className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl font-bold text-transparent">
-                {game.game_name}
-              </h2>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="relative flex size-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex size-2 rounded-full bg-green-500" />
-                  </span>
-                  <span className="text-[10px] font-black tracking-widest text-green-600 uppercase">
-                    Live Play
-                  </span>
-                </div>
-                <span className="h-3 w-px bg-gray-300" />
-                <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">
-                  Kid Safe
-                </span>
-              </div>
-            </div>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleFullscreen}
-              className="border-glass-border bg-glass-bg text-primary hidden items-center gap-2 rounded-xl border-2 px-4 py-2 text-sm font-bold shadow-sm transition-all hover:scale-105 hover:bg-white active:scale-95 sm:flex dark:hover:bg-white/10"
-            >
-              <span>{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
-              <span className="text-lg">{isFullscreen ? '🚀' : '📺'}</span>
-            </button>
-
-            <div className="flex gap-2">
-              <div className="group relative flex size-11 items-center justify-center rounded-xl border-2 border-white bg-yellow-400 text-white shadow-lg transition-all hover:scale-110 hover:rotate-6 active:scale-90">
-                <span className="text-xl">⭐</span>
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded-lg bg-gray-900 px-3 py-1.5 text-[10px] font-black whitespace-nowrap text-white transition-all group-hover:scale-100">
-                  SAVE GAME
-                </span>
-              </div>
-              <div className="group relative flex size-11 items-center justify-center rounded-xl border-2 border-white bg-linear-to-br from-green-400 to-emerald-500 text-white shadow-lg transition-all hover:scale-110 hover:-rotate-6 active:scale-90">
-                <span className="text-xl">🚀</span>
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 rounded-lg bg-gray-900 px-3 py-1.5 text-[10px] font-black whitespace-nowrap text-white transition-all group-hover:scale-100">
-                  PLAY NOW
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="group/iframe bg-card-bg relative overflow-hidden shadow-[0_20px_50px_-20px_rgba(79,70,229,0.3)] transition-all duration-700 hover:shadow-[0_30px_70px_-20px_rgba(79,70,229,0.5)]">
-          <div className="from-primary via-secondary to-primary absolute inset-[-2px] z-0 animate-pulse bg-linear-to-r opacity-30 blur-sm group-hover/iframe:opacity-50" />
+        <div className="group/iframe bg-card-bg relative mb-6 overflow-hidden shadow-[0_20px_50px_-20px_rgba(79,70,229,0.3)] transition-all duration-700 hover:shadow-[0_30px_70px_-20px_rgba(79,70,229,0.5)]">
+          <div className="from-primary via-secondary to-primary pointer-events-none absolute inset-[-2px] z-0 animate-pulse bg-linear-to-r opacity-30 blur-sm group-hover/iframe:opacity-50" />
 
           <div className="relative z-10 overflow-hidden rounded-2xl">
             <GamePlayWrapper
@@ -225,57 +170,117 @@ const GameDetailsClient = ({ game }: Props) => {
 
           <div className="pointer-events-none absolute inset-0 z-20 rounded-2xl border-2 border-white/20 shadow-inner" />
         </div>
+        <div className="border-glass-border bg-glass-bg/80 flex flex-col items-center justify-between gap-4 rounded-3xl border-2 p-5 shadow-lg backdrop-blur-xl md:flex-row">
+          <div className="flex items-center gap-5">
+            <div className="relative">
+              <div className="absolute -inset-2 animate-pulse rounded-full bg-pink-400/20 blur-md" />
+              <div className="relative flex size-14 items-center justify-center rounded-2xl bg-linear-to-br from-purple-500 via-pink-500 to-rose-500 text-3xl text-white shadow-[0_8px_20px_-5px_rgba(236,72,153,0.5)] transition-all duration-500 hover:scale-110 hover:rotate-12">
+                {game.emoji || '🎮'}
+              </div>
+            </div>
+            <div>
+              <h2 className="font-baloo bg-linear-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-3xl font-black text-transparent drop-shadow-sm">
+                {game.game_name}
+              </h2>
+              <div className="mt-1 flex items-center gap-3">
+                <div className="flex items-center gap-2 rounded-full bg-green-100 px-2 py-0.5 dark:bg-green-900/30">
+                  <span className="relative flex size-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-green-500" />
+                  </span>
+                  <span className="text-[9px] font-black tracking-widest text-green-600 uppercase dark:text-green-400">
+                    Online
+                  </span>
+                </div>
+                <span className="h-3 w-px bg-gray-200 dark:bg-white/10" />
+                <span className="text-[9px] font-black tracking-widest text-gray-400 uppercase">
+                  Verified Safe ✅
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={toggleFullscreen}
+              className="text-primary hidden items-center gap-3 rounded-2xl border-2 border-white bg-white/80 px-5 py-2.5 text-sm font-black shadow-sm transition-all hover:-translate-y-1 hover:bg-white hover:shadow-md active:scale-95 sm:flex dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+            >
+              <span>{isFullscreen ? 'Exit Fullscreen' : 'Big Screen'}</span>
+              <span className="text-xl transition-transform group-hover:scale-125">
+                {isFullscreen ? '🚀' : '📺'}
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="from-white via-white/80 to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative mb-12 overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br p-5 sm:p-6 md:p-10 shadow-sm ring-1 ring-black/5 dark:border-white/10 dark:ring-white/5">
+      <div className="to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative mb-5 overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br from-white via-white/80 p-5 shadow-sm ring-1 ring-black/5 sm:p-6 md:mb-12 md:p-10 dark:border-white/10 dark:ring-white/5">
         {/* Decorative background shapes - softer and more subtle */}
-        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
-        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
+        <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
         <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex-1 text-center sm:text-left">
-            <div className="mb-4 flex flex-wrap items-center justify-center sm:justify-start gap-3">
-              <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-orange-500 px-3 py-1 sm:px-4 sm:py-1.5 text-[9px] sm:text-[10px] font-black text-white shadow-sm ring-2 ring-white dark:ring-white/20">
-                <span className="animate-wiggle inline-block">⭐</span> FEATURED GAME
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+              <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-orange-500 px-3 py-1 text-[9px] font-black text-white shadow-sm ring-2 ring-white sm:px-4 sm:py-1.5 sm:text-[10px] dark:ring-white/20">
+                <span className="animate-wiggle inline-block">⭐</span> FEATURED
+                GAME
               </span>
               {game.status && (
-                <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-emerald-500 px-3 py-1 sm:px-4 sm:py-1.5 text-[9px] sm:text-[10px] font-black text-white shadow-sm ring-2 ring-white dark:ring-white/20">
+                <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-emerald-500 px-3 py-1 text-[9px] font-black text-white shadow-sm ring-2 ring-white sm:px-4 sm:py-1.5 sm:text-[10px] dark:ring-white/20">
                   ✅ {game.status}
                 </span>
               )}
             </div>
 
-            <h1 className="font-baloo from-primary via-secondary to-primary mb-2 bg-linear-to-r bg-clip-text text-3xl sm:text-4xl font-black text-transparent drop-shadow-sm md:text-5xl lg:text-6xl">
+            <h1 className="font-baloo from-primary via-secondary to-primary mb-2 bg-linear-to-r bg-clip-text text-3xl font-black text-transparent drop-shadow-sm sm:text-4xl md:text-5xl lg:text-6xl">
               {game.game_name}
             </h1>
 
-            <p className="text-deepblue/40 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-sm sm:text-base font-bold md:text-lg dark:text-white/40">
+            <p className="text-deepblue/40 flex flex-wrap items-center justify-center gap-2 text-sm font-bold sm:justify-start sm:text-base md:text-lg dark:text-white/40">
               <span>Made with ❤️ by</span>
-              <span className="bg-purple-100 px-3 py-1 rounded-full text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+              <span className="rounded-full bg-purple-100 px-3 py-1 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
                 {game.developer_team}
               </span>
             </p>
           </div>
 
-          {/* Quick Hero Stats - Optimized for Mobile Grid */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-4">
+          {/* Quick Hero Stats - Magical Sticker Cards */}
+          <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-6">
             {metaItems
               .filter((item) => ['Players', 'Level'].includes(item.label))
               .map((item, index) => (
                 <div
                   key={index}
-                  className="group relative flex flex-col items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] border-2 border-white bg-white p-4 sm:px-6 sm:py-4 shadow-sm transition-all hover:-translate-y-1 hover:scale-105 hover:shadow-md dark:border-white/10 dark:bg-card-bg"
+                  className="group dark:bg-card-bg relative flex flex-col items-center justify-center rounded-3xl border-3 border-white bg-white p-5 shadow-[0_12px_24px_-8px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:rotate-3 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] sm:p-6 sm:px-10 dark:border-white/10"
                 >
-                  <div className={`bg-linear-to-br ${item.color} mb-2 sm:mb-3 flex size-11 sm:size-14 items-center justify-center rounded-xl sm:rounded-2xl shadow-sm ring-2 sm:ring-4 ring-white transition-transform group-hover:rotate-6 dark:ring-white/10`}>
-                    <Image src={item.icon} alt={item.label} className="size-5 sm:size-6 brightness-0 invert" />
+                  {/* Magical Shine Effect */}
+                  <div className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full" />
+
+                  {/* Background Glow */}
+                  <div
+                    className={`bg-linear-to-br ${item.color} pointer-events-none absolute inset-0 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-10`}
+                  />
+
+                  <div
+                    className={`bg-linear-to-br ${item.color} relative mb-3 flex size-12 items-center justify-center rounded-2xl shadow-lg ring-4 ring-white transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 sm:mb-4 sm:size-16 dark:ring-white/10`}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      className="size-6 brightness-0 invert transition-transform sm:size-8"
+                    />
                   </div>
-                  <span className="text-deepblue/30 text-[8px] sm:text-[10px] font-black tracking-widest uppercase dark:text-white/20">
+
+                  <span className="text-deepblue/40 relative z-10 text-[9px] font-black tracking-[0.2em] uppercase sm:text-[10px] dark:text-white/40">
                     {item.label}
                   </span>
-                  <span className="text-foreground text-xs sm:text-sm font-black text-center">
+                  <span className="text-foreground relative z-10 text-center text-sm font-black sm:text-base">
                     {item.value}
                   </span>
-                  <div className="absolute -top-1 -right-1 text-xl sm:text-2xl opacity-0 transition-opacity group-hover:opacity-100">
+
+                  {/* Floating Emoji Corner */}
+                  <div className="dark:bg-card-bg absolute -top-1 -right-1 flex size-8 items-center justify-center rounded-full bg-white text-xl shadow-md transition-all duration-500 group-hover:scale-125 group-hover:-rotate-12">
                     {item.emoji}
                   </div>
                 </div>
@@ -284,56 +289,75 @@ const GameDetailsClient = ({ game }: Props) => {
         </div>
 
         {/* Secondary Info - Wrapped for Mobile */}
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 border-t border-gray-100 pt-8 dark:border-white/10">
-          <span className="text-deepblue/30 text-[10px] font-black tracking-widest uppercase text-center sm:text-left sm:mr-2 dark:text-white/20">
-            Game Details:
-          </span>
-          <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
+        <div className="mt-10 flex flex-col gap-6 border-t border-gray-100 pt-10 sm:flex-row sm:items-center dark:border-white/10">
+          <div className="flex shrink-0 items-center gap-3">
+            <div className="h-1 w-8 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
+            <span className="text-deepblue/40 text-[10px] font-black tracking-[0.2em] uppercase dark:text-white/40">
+              Extra Fun Info:
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             {metaItems
               .filter((item) => !['Players', 'Level'].includes(item.label))
               .map((item, index) => (
                 <div
                   key={index}
-                  className="group flex items-center gap-2.5 rounded-full border-2 border-white bg-white/50 px-3 py-1.5 sm:px-4 sm:py-2 shadow-xs transition-all hover:bg-white hover:shadow-sm dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                  className="group flex items-center gap-3 rounded-2xl border-2 border-white bg-white/50 px-4 py-2.5 shadow-xs transition-all hover:-translate-y-1 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
                 >
-                  <div className={`bg-linear-to-br ${item.color} flex size-6 sm:size-7 items-center justify-center rounded-full shadow-xs ring-2 ring-white dark:ring-white/10`}>
-                    <Image src={item.icon} alt={item.label} className="size-3 sm:size-3.5 brightness-0 invert" />
+                  <div
+                    className={`bg-linear-to-br ${item.color} flex size-8 items-center justify-center rounded-xl shadow-sm ring-2 ring-white transition-transform group-hover:scale-110 group-hover:rotate-6 dark:ring-white/10`}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      className="size-4 brightness-0 invert"
+                    />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-deepblue/40 text-[7px] sm:text-[8px] font-black tracking-widest uppercase leading-none dark:text-white/30">
+                    <span className="text-deepblue/40 text-[8px] leading-none font-black tracking-widest uppercase dark:text-white/30">
                       {item.label}
                     </span>
-                    <span className="text-foreground text-[9px] sm:text-[10px] font-extrabold leading-none">
+                    <span className="text-foreground mt-0.5 text-xs leading-none font-black">
                       {item.value}
                     </span>
                   </div>
+                  <span className="ml-1 text-lg opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                    {item.emoji}
+                  </span>
                 </div>
               ))}
           </div>
         </div>
 
         {/* Floating elements - hidden on very small screens to avoid clutter */}
-        <div className="absolute top-8 right-8 animate-bounce text-3xl select-none opacity-20 dark:opacity-10 hidden sm:block">🎈</div>
-        <div className="absolute bottom-8 right-16 animate-pulse text-3xl select-none opacity-20 delay-500 dark:opacity-10 hidden sm:block">🎯</div>
+        <div className="pointer-events-none absolute top-8 right-8 hidden animate-bounce text-3xl opacity-20 select-none sm:block dark:opacity-10">
+          🎈
+        </div>
+        <div className="pointer-events-none absolute right-16 bottom-8 hidden animate-pulse text-3xl opacity-20 delay-500 select-none sm:block dark:opacity-10">
+          🎯
+        </div>
       </div>
 
-      <div className="group from-white via-white/80 to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative mb-12 overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br p-6 sm:p-10 shadow-sm ring-1 ring-black/5 dark:border-white/10 dark:ring-white/5">
-        <div className="absolute top-6 right-6 text-4xl opacity-10 dark:opacity-5">📖</div>
-        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
-        <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
+      <div className="group to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br from-white via-white/80 p-6 shadow-sm ring-1 ring-black/5 sm:p-10 dark:border-white/10 dark:ring-white/5">
+        <div className="pointer-events-none absolute top-6 right-6 text-4xl opacity-10 dark:opacity-5">
+          📖
+        </div>
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
+        <div className="pointer-events-none absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
         <div className="relative z-10 grid gap-8 lg:grid-cols-3 lg:items-start">
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-2 w-12 rounded-full bg-linear-to-r from-purple-500 to-pink-500 shadow-sm" />
-              <span className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl sm:text-3xl font-black text-transparent">
+              <span className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl font-black text-transparent sm:text-3xl">
                 About This Game
               </span>
-              <span className="text-2xl animate-bounce-slow">🎯</span>
+              <span className="animate-bounce-slow text-2xl">🎯</span>
             </div>
 
             <div
-              className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none font-medium leading-relaxed dark:text-white/70"
+              className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none leading-relaxed font-medium dark:text-white/70"
               dangerouslySetInnerHTML={{ __html: formattedDescription }}
             />
           </div>
@@ -341,15 +365,15 @@ const GameDetailsClient = ({ game }: Props) => {
           {game.thumbnail && (
             <div className="lg:col-span-1">
               <div className="sticky top-8">
-                <div className="border-4 border-white bg-white rounded-3xl overflow-hidden shadow-sm dark:border-white/10 dark:bg-card-bg">
+                <div className="dark:bg-card-bg overflow-hidden rounded-3xl border-4 border-white bg-white shadow-sm dark:border-white/10">
                   <Image
                     src={game.thumbnail}
                     alt={game.game_name}
                     width={400}
                     height={400}
-                    className="object-cover w-full transition-transform duration-700 hover:scale-110"
+                    className="w-full object-cover transition-transform duration-700 hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-purple-500/10 to-transparent pointer-events-none" />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-purple-500/10 to-transparent" />
                 </div>
               </div>
             </div>
@@ -358,7 +382,7 @@ const GameDetailsClient = ({ game }: Props) => {
       </div>
 
       {relatedGames.length > 0 && (
-        <div className="mt-16">
+        <div className="mt-6 sm:mt-9 md:mt-12 lg:mt-16">
           <SectionHeading title="More Awesome Games" icon="🎮" />
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
