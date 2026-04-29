@@ -1,3 +1,8 @@
+
+export const SITE_NAME = 'Funox Kids';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+export const SITE_MASK_ICON = './icon.png';
+
 export const gamesData = {
   game: {
     game_name: 'Coloring Book',
@@ -213,7 +218,3 @@ export const gamesData = {
 };
 
 export const allGames = [gamesData.game, ...gamesData.relatedGames];
-
-export const SITE_NAME = 'Funox Kids';
-export const SITE_URL = 'https://kids.funox.com';
-export const SITE_MASK_ICON = './icon.png';

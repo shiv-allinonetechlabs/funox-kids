@@ -32,7 +32,7 @@ export function generatePageMetadata(path: string, _params?: any): Metadata {
       url: canonicalUrl,
       images: [
         {
-          url: imgGame.src,
+          url: './thumbnail.png',
           width: 1200,
           height: 630,
           alt: SITE_NAME,
