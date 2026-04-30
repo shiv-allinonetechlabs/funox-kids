@@ -11,6 +11,7 @@ import {
   iconScreen,
   iconUsers,
 } from '@/assets/images';
+import Button from '@/components/Button';
 import GameCard from '@/components/GameCard';
 import GamePlayWrapper from '@/components/GamePlayWrapper';
 import SectionHeading from '@/components/SectionHeading';
@@ -141,12 +142,9 @@ const GameDetailsClient = ({ game }: Props) => {
 
             {/* Action Button */}
             <div className="shrink-0">
-              <button
-                onClick={() => setShowBanner(false)}
-                className="bg-accent hover:bg-accent/90 rounded-xl px-6 py-2.5 text-xs font-black text-white shadow-md transition-all hover:scale-105 active:scale-95"
-              >
-                Got it! 👍
-              </button>
+              <Button onClick={() => setShowBanner(false)} size="sm">
+                Got it!
+              </Button>
             </div>
           </div>
         </div>
@@ -173,16 +171,21 @@ const GameDetailsClient = ({ game }: Props) => {
         <div className="border-glass-border bg-glass-bg/80 flex flex-col items-center justify-between gap-4 rounded-3xl border-2 p-5 shadow-lg backdrop-blur-xl md:flex-row">
           <div className="flex items-center gap-5">
             <div className="relative">
-              <div className="absolute -inset-2 animate-pulse rounded-full bg-pink-400/20 blur-md" />
-              <div className="relative flex size-14 items-center justify-center rounded-2xl bg-linear-to-br from-purple-500 via-pink-500 to-rose-500 text-3xl text-white shadow-[0_8px_20px_-5px_rgba(236,72,153,0.5)] transition-all duration-500 hover:scale-110 hover:rotate-12">
-                {game.emoji || '🎮'}
+              <div className="bg-primary/20 absolute -inset-2 animate-pulse rounded-full blur-md" />
+              <div className="from-primary via-secondary to-primary relative flex size-14 items-center justify-center overflow-hidden rounded-xl bg-linear-to-br text-white transition-all duration-500 hover:scale-110 hover:rotate-12">
+                <Image
+                  src={game.thumbnail}
+                  alt={game.game_name}
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
             <div>
-              <h2 className="font-baloo bg-linear-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-3xl font-black text-transparent drop-shadow-sm">
+              <h2 className="font-baloo from-primary via-secondary to-primary bg-linear-to-r bg-clip-text text-3xl font-black text-transparent drop-shadow-sm">
                 {game.game_name}
               </h2>
-              <div className="mt-1 flex items-center gap-3">
+              <div className="mt-1 flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 rounded-full bg-green-100 px-2 py-0.5 dark:bg-green-900/30">
                   <span className="relative flex size-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -194,8 +197,24 @@ const GameDetailsClient = ({ game }: Props) => {
                 </div>
                 <span className="h-3 w-px bg-gray-200 dark:bg-white/10" />
                 <span className="text-[9px] font-black tracking-widest text-gray-400 uppercase">
-                  Verified Safe ✅
+                  Verified Safe
                 </span>
+                {game.developer_team && (
+                  <>
+                    <span className="h-3 w-px bg-gray-200 dark:bg-white/10" />
+                    <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[9px] font-black tracking-widest text-purple-600 uppercase dark:bg-purple-900/30 dark:text-purple-400">
+                      By {game.developer_team}
+                    </span>
+                  </>
+                )}
+                {game.status && (
+                  <>
+                    <span className="h-3 w-px bg-gray-200 dark:bg-white/10" />
+                    <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[9px] font-black tracking-widest text-blue-600 uppercase dark:bg-blue-900/30 dark:text-blue-400">
+                      {game.status}
+                    </span>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -205,10 +224,7 @@ const GameDetailsClient = ({ game }: Props) => {
               onClick={toggleFullscreen}
               className="text-primary hidden items-center gap-3 rounded-2xl border-2 border-white bg-white/80 px-5 py-2.5 text-sm font-black shadow-sm transition-all hover:-translate-y-1 hover:bg-white hover:shadow-md active:scale-95 sm:flex dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
             >
-              <span>{isFullscreen ? 'Exit Fullscreen' : 'Big Screen'}</span>
-              <span className="text-xl transition-transform group-hover:scale-125">
-                {isFullscreen ? '🚀' : '📺'}
-              </span>
+              <span>Big Screen</span>
             </button>
           </div>
         </div>
@@ -219,18 +235,12 @@ const GameDetailsClient = ({ game }: Props) => {
         <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
-        <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1 text-center sm:text-left">
             <div className="mb-4 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
               <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-orange-500 px-3 py-1 text-[9px] font-black text-white shadow-sm ring-2 ring-white sm:px-4 sm:py-1.5 sm:text-[10px] dark:ring-white/20">
-                <span className="animate-wiggle inline-block">⭐</span> FEATURED
-                GAME
+                FEATURED GAME
               </span>
-              {game.status && (
-                <span className="flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-emerald-500 px-3 py-1 text-[9px] font-black text-white shadow-sm ring-2 ring-white sm:px-4 sm:py-1.5 sm:text-[10px] dark:ring-white/20">
-                  ✅ {game.status}
-                </span>
-              )}
             </div>
 
             <h1 className="font-baloo from-primary via-secondary to-primary mb-2 bg-linear-to-r bg-clip-text text-3xl font-black text-transparent drop-shadow-sm sm:text-4xl md:text-5xl lg:text-6xl">
@@ -238,7 +248,7 @@ const GameDetailsClient = ({ game }: Props) => {
             </h1>
 
             <p className="text-deepblue/40 flex flex-wrap items-center justify-center gap-2 text-sm font-bold sm:justify-start sm:text-base md:text-lg dark:text-white/40">
-              <span>Made with ❤️ by</span>
+              <span>Made by</span>
               <span className="rounded-full bg-purple-100 px-3 py-1 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
                 {game.developer_team}
               </span>
@@ -252,7 +262,7 @@ const GameDetailsClient = ({ game }: Props) => {
               .map((item, index) => (
                 <div
                   key={index}
-                  className="group dark:bg-card-bg relative flex flex-col items-center justify-center rounded-3xl border-3 border-white bg-white p-5 shadow-[0_12px_24px_-8px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:rotate-3 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] sm:p-6 sm:px-10 dark:border-white/10"
+                  className="group relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border-3 border-white bg-white p-5 shadow-[0_12px_24px_-8px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:rotate-3 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] sm:p-6 sm:px-10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
                 >
                   {/* Magical Shine Effect */}
                   <div className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full" />
@@ -278,18 +288,13 @@ const GameDetailsClient = ({ game }: Props) => {
                   <span className="text-foreground relative z-10 text-center text-sm font-black sm:text-base">
                     {item.value}
                   </span>
-
-                  {/* Floating Emoji Corner */}
-                  <div className="dark:bg-card-bg absolute -top-1 -right-1 flex size-8 items-center justify-center rounded-full bg-white text-xl shadow-md transition-all duration-500 group-hover:scale-125 group-hover:-rotate-12">
-                    {item.emoji}
-                  </div>
                 </div>
               ))}
           </div>
         </div>
 
         {/* Secondary Info - Wrapped for Mobile */}
-        <div className="mt-10 flex flex-col gap-6 border-t border-gray-100 pt-10 sm:flex-row sm:items-center dark:border-white/10">
+        <div className="mt-6 flex flex-col gap-4 border-t border-gray-100 pt-6 sm:flex-row sm:items-center dark:border-white/10">
           <div className="flex shrink-0 items-center gap-3">
             <div className="h-1 w-8 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
             <span className="text-deepblue/40 text-[10px] font-black tracking-[0.2em] uppercase dark:text-white/40">
@@ -322,27 +327,15 @@ const GameDetailsClient = ({ game }: Props) => {
                       {item.value}
                     </span>
                   </div>
-                  <span className="ml-1 text-lg opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                    {item.emoji}
-                  </span>
                 </div>
               ))}
           </div>
         </div>
 
         {/* Floating elements - hidden on very small screens to avoid clutter */}
-        <div className="pointer-events-none absolute top-8 right-8 hidden animate-bounce text-3xl opacity-20 select-none sm:block dark:opacity-10">
-          🎈
-        </div>
-        <div className="pointer-events-none absolute right-16 bottom-8 hidden animate-pulse text-3xl opacity-20 delay-500 select-none sm:block dark:opacity-10">
-          🎯
-        </div>
       </div>
 
       <div className="group to-primary/5 dark:from-card-bg dark:via-card-bg/80 dark:to-primary/10 relative overflow-hidden rounded-[2.5rem] border-2 border-white bg-linear-to-br from-white via-white/80 p-6 shadow-sm ring-1 ring-black/5 sm:p-10 dark:border-white/10 dark:ring-white/5">
-        <div className="pointer-events-none absolute top-6 right-6 text-4xl opacity-10 dark:opacity-5">
-          📖
-        </div>
         <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-yellow-200/10 blur-3xl dark:bg-yellow-500/5" />
         <div className="pointer-events-none absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-purple-200/10 blur-3xl dark:bg-purple-500/5" />
 
@@ -353,7 +346,6 @@ const GameDetailsClient = ({ game }: Props) => {
               <span className="font-baloo bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-2xl font-black text-transparent sm:text-3xl">
                 About This Game
               </span>
-              <span className="animate-bounce-slow text-2xl">🎯</span>
             </div>
 
             <div
@@ -383,7 +375,7 @@ const GameDetailsClient = ({ game }: Props) => {
 
       {relatedGames.length > 0 && (
         <div className="mt-6 sm:mt-9 md:mt-12 lg:mt-16">
-          <SectionHeading title="More Awesome Games" icon="🎮" />
+          <SectionHeading title="More Awesome Games" />
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
             {relatedGames.map((relatedGame) => (
@@ -393,7 +385,6 @@ const GameDetailsClient = ({ game }: Props) => {
                 category={relatedGame.developer_team}
                 image={relatedGame.thumbnail}
                 href={allRoute.game(relatedGame.game_id)}
-                emoji={relatedGame.emoji}
               />
             ))}
           </div>

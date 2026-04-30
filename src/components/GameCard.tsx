@@ -7,7 +7,6 @@ type GameCardProps = {
   category: string;
   image: string | StaticImageData;
   href: string;
-  emoji?: string;
   players?: string;
   developer?: string;
   priority?: boolean;
@@ -19,7 +18,6 @@ const GameCard = React.memo(
     // category,
     image,
     href,
-    emoji = '🎮',
     players = '1.2k',
     developer = 'Funox Studio',
     priority = false,
@@ -77,9 +75,6 @@ const GameCard = React.memo(
               <h3 className="font-baloo group-hover:text-primary text-foreground line-clamp-1 text-base font-black transition-colors duration-300 md:text-2xl">
                 {title}
               </h3>
-              <div className="bg-primary/20 flex size-7 shrink-0 items-center justify-center rounded-lg text-sm transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 md:size-10 md:rounded-xl md:text-xl">
-                {emoji}
-              </div>
             </div>
             <p className="mt-0.5 line-clamp-1 text-[8px] font-bold tracking-widest text-gray-400 uppercase md:mt-1 md:text-[11px]">
               By <span className="text-primary">{developer}</span>

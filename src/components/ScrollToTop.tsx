@@ -88,11 +88,20 @@ export default function ScrollToTop() {
 
       {/* Center Icon Section */}
       <div className="relative z-10 flex flex-col items-center justify-center">
-        <span className="text-2xl transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-110">
-          🚀
-        </span>
-        {/* Animated engine shadow */}
-        <div className="bg-primary/20 mt-[-2px] h-0.5 w-4 rounded-full blur-[1px] transition-all group-hover:w-2 group-hover:opacity-40" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2.5}
+          stroke="currentColor"
+          className="size-5 transition-transform duration-300 group-hover:-translate-y-0.5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.5 15.75l7.5-7.5 7.5 7.5"
+          />
+        </svg>
       </div>
 
       {/* Percentage Indicator (Tooltip) */}

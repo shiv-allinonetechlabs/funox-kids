@@ -56,9 +56,6 @@ const Footer = React.memo(() => {
           <div className="from-primary to-brand-blue hover:shadow-primary/20 flex flex-col justify-between rounded-[32px] bg-linear-to-br p-8 text-white shadow-xl transition-all duration-500 will-change-transform lg:w-1/3">
             <div>
               <Link href={allRoute.home} className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg">
-                  <span className="text-xl">🎮</span>
-                </div>
                 <span className="font-baloo flex items-center text-3xl font-black tracking-tight text-white">
                   <span>Funox</span>
                   <span className="ml-2 flex items-center gap-0.5">
@@ -78,17 +75,6 @@ const Footer = React.memo(() => {
                 The ultimate destination for kids who love to play, learn, and
                 explore! Join thousands of kids in a safe digital playground.
               </p>
-            </div>
-
-            <div className="mt-8 flex gap-3">
-              {['🎈', '🌈', '⭐', '🚀'].map((emoji, i) => (
-                <div
-                  key={i}
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-md transition-all will-change-transform hover:scale-110 hover:bg-white/20"
-                >
-                  <span className="text-base">{emoji}</span>
-                </div>
-              ))}
             </div>
           </div>
 

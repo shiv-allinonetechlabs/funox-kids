@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 interface SectionHeadingProps {
   title: string;
   highlightWord?: string;
-  icon?: string;
   showLine?: boolean;
   className?: string;
   variant?: 'default' | 'gradient';
@@ -15,7 +14,6 @@ const SectionHeading: React.FC<SectionHeadingProps> = React.memo(
   ({
     title,
     highlightWord,
-    icon,
     showLine = true,
     className,
     variant = 'gradient',
@@ -28,7 +26,6 @@ const SectionHeading: React.FC<SectionHeadingProps> = React.memo(
         <div className="flex items-center gap-4">
           {/* Title and Icon Group */}
           <div className="flex shrink-0 items-center gap-4">
-            {icon && <span className="text-3xl md:text-4xl">{icon}</span>}
             <h2
               className={cn(
                 'font-baloo text-3xl font-black md:text-5xl',

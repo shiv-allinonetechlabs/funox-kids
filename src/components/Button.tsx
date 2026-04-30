@@ -31,7 +31,7 @@ const variantStyles = {
 } as const;
 
 const sizeStyles = {
-  sm: 'px-5 py-3 text-sm rounded-xl gap-2',
+  sm: 'px-5 py-2 text-sm rounded-xl gap-2',
   md: 'px-5 sm:px-8 py-2 sm:py-3 text-base rounded-xl md:rounded-xl md:rounded-2xl gap-3',
 } as const;
 

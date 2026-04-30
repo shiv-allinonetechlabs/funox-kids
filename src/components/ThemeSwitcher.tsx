@@ -304,20 +304,7 @@ const ThemeSwitcher: React.FC = () => {
               }`}
             >
               {/* Animated Background Elements */}
-              <div className="absolute inset-0 opacity-40 transition-opacity duration-700">
-                {darkMode ? (
-                  <div className="absolute inset-0 flex items-center justify-around px-2 text-[8px]">
-                    <span className="animate-pulse">⭐</span>
-                    <span className="animate-pulse delay-75">✨</span>
-                    <span className="animate-pulse delay-150">⭐</span>
-                  </div>
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-around px-2 text-[10px]">
-                    <span className="animate-bounce">☁️</span>
-                    <span className="animate-bounce delay-100">☁️</span>
-                  </div>
-                )}
-              </div>
+              <div className="absolute inset-0 opacity-40 transition-opacity duration-700"></div>
 
               <div
                 className={`shadow-premium flex-center absolute top-0.5 h-7 w-7 transform rounded-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] ${
@@ -348,7 +335,7 @@ const ThemeSwitcher: React.FC = () => {
                     animation: `floatUp 0.8s ease-out forwards ${i * 0.05}s`,
                   }}
                 >
-                  {['✨', '⭐', '🌟', '🦄'][i % 4]}
+                  {[''][0]}
                 </div>
               ))}
             </div>
@@ -438,7 +425,7 @@ const ThemeSwitcher: React.FC = () => {
                   animation: `magic-particle-${i} 1s ease-out forwards`,
                 }}
               >
-                {['✨', '⭐', '🌟', '🍭', '🌈'][i % 5]}
+                {[''][0]}
                 <style jsx>{`
                   @keyframes magic-particle-${i} {
                     0% {

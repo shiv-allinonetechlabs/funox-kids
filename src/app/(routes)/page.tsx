@@ -29,7 +29,6 @@ const Home = () => {
         <SectionHeading
           title="Popular Games"
           highlightWord="Games"
-          icon="🔥"
           showLine={true}
         />
 
@@ -42,7 +41,6 @@ const Home = () => {
               developer={game.developer_team}
               image={game.thumbnail}
               href={allRoute.game(game.game_id)}
-              emoji={game.emoji}
             />
           ))}
         </div>
