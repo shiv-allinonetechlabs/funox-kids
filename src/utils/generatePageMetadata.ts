@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 
-import { imgGame } from '@/assets/images';
 import { SITE_NAME, SITE_URL } from '@/constants';
 import { STATIC_PAGE_METADATA } from '@/constants/pageMetadata';
 
@@ -32,10 +31,11 @@ export function generatePageMetadata(path: string, _params?: any): Metadata {
       url: canonicalUrl,
       images: [
         {
-          url: './thumbnail.png',
+          url: `${SITE_URL}/thumbnail.png`,
           width: 1200,
           height: 630,
           alt: SITE_NAME,
+          type: 'image/png',
         },
       ],
     },
@@ -43,7 +43,7 @@ export function generatePageMetadata(path: string, _params?: any): Metadata {
       card: 'summary_large_image',
       title,
       description,
-      images: [imgGame.src],
+      images: [`${SITE_URL}/thumbnail.png`],
     },
   };
 }

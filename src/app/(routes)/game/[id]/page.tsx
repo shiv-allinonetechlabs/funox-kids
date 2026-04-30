@@ -37,9 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [
         {
           url: game.thumbnail,
-          width: 1200,
-          height: 630,
+          width: 1293,
+          height: 807,
           alt: game.game_name,
+          type: 'image/png',
         },
       ],
     },

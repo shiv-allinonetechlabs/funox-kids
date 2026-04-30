@@ -1,7 +1,7 @@
 import Banner from '@/components/Banner';
 import GameCard from '@/components/GameCard';
 import SectionHeading from '@/components/SectionHeading';
-import { allGames } from '@/constants';
+import { SITE_URL, allGames } from '@/constants';
 import { allRoute } from '@/constants/allRoutes';
 import { generatePageMetadata } from '@/utils/generatePageMetadata';
 
@@ -14,7 +14,7 @@ const Home = () => {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Funox Kids',
-    url: 'https://funox.kids/', // Assuming this is the production URL
+    url: SITE_URL,
   };
 
   return (
