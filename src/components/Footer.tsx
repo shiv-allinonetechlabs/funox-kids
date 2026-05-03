@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import { imgKidsSmallDarktm } from '@/assets/images';
 import { allRoute } from '@/constants/allRoutes';
 
 const companyLinks = [
@@ -46,7 +47,7 @@ const Footer = React.memo(() => {
               <Image
                 alt="Kids.Funox.com is certified by the kidSAFE Seal Program."
                 height={40}
-                src="https://www.kidsafeseal.com/sealimage/1348407079634597140/pokikids_small_darktm.png"
+                src={imgKidsSmallDarktm}
                 width={110}
               />
             </Link>

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { imgGame } from '@/assets/images';
+import { imgBaby_DayCare } from '@/assets/images';
 
 import Button from './Button';
 
@@ -41,7 +41,7 @@ const Banner = () => {
               </p>
 
               <Link
-                href="game/funny-pet-rescue"
+                href="/game/animal-day-care"
                 className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start"
               >
                 <Button variant="primary">Start Playing</Button>
@@ -52,7 +52,7 @@ const Banner = () => {
             <div className="relative order-1 flex items-center justify-center lg:order-2">
               <div className="group border-glass-border bg-glass-bg relative flex h-64 w-64 items-center justify-center rounded-3xl border-4 shadow-2xl backdrop-blur-xl transition-all duration-700 will-change-transform hover:scale-110 hover:rotate-3 sm:h-80 sm:w-80">
                 <Image
-                  src={imgGame}
+                  src={imgBaby_DayCare}
                   alt="game"
                   fill
                   priority

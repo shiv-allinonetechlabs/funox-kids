@@ -33,14 +33,15 @@ const Home = () => {
         />
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
-          {allGames.map((game) => (
+          {allGames.map((game, index) => (
             <GameCard
               key={game.game_id}
               title={game.game_name}
               category="Kids"
               developer={game.developer_team}
-              image={game.thumbnail}
+              image={game.thumbnail?.src || game.thumbnail}
               href={allRoute.game(game.game_id)}
+              priority={index < 4}
             />
           ))}
         </div>

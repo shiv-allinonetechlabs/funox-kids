@@ -21,8 +21,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'img.poki-cdn.com',
+        hostname: '*.games.funox.com',
       },
+
       {
         protocol: 'https',
         hostname: 'www.kidsafeseal.com',

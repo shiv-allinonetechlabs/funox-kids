@@ -10,12 +10,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     applicationName: SITE_NAME,
-    title: {
-      default: 'Funox Kids | Safe & Free Games for Children',
-      template: `%s | ${SITE_NAME}`,
-    },
-    description:
-      'Welcome to Funox Kids, the safest and most magical playground on the web! Play hundreds of free, super-fun games, puzzles, and adventures designed just for you. No downloads, no worries—just pure fun for every child!',
     keywords: [
       'kids games',
       'free games',
@@ -34,7 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
     formatDetection: {
       telephone: false,
     },
-    // Note: canonical and alternates are defined by each page, not the layout
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'black-translucent',
+      title: SITE_NAME,
+    }, // Note: canonical and alternates are defined by each page, not the layout
     openGraph: {
       type: 'website',
       siteName: SITE_NAME,

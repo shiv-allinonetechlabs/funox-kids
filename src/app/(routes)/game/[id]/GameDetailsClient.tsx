@@ -22,8 +22,9 @@ import { useFullscreen } from '@/hooks/useFullscreen';
 type Game = {
   game_name: string;
   game_id: string;
-  emoji: string;
-  thumbnail: string;
+  emoji?: string;
+  p4_d_link: string;
+  thumbnail: any;
   developer_team: string;
   description: string;
   status: string;
@@ -36,7 +37,7 @@ type Props = {
 const GameDetailsClient = ({ game }: Props) => {
   const [showBanner, setShowBanner] = useState(true);
   const gameContainerRef = useRef<HTMLDivElement>(null);
-  const { isFullscreen, toggleFullscreen } = useFullscreen(gameContainerRef);
+  const { toggleFullscreen } = useFullscreen(gameContainerRef);
 
   const id = game.game_id;
   // Get related games (exclude current game)
@@ -159,9 +160,9 @@ const GameDetailsClient = ({ game }: Props) => {
 
           <div className="relative z-10 overflow-hidden rounded-2xl">
             <GamePlayWrapper
-              gameId={game.game_id}
+              gameLink={game.p4_d_link}
               gameName={game.game_name}
-              thumbnail={game.thumbnail}
+              thumbnail={game.thumbnail?.src || game.thumbnail}
               containerRef={gameContainerRef}
             />
           </div>
@@ -174,7 +175,7 @@ const GameDetailsClient = ({ game }: Props) => {
               <div className="bg-primary/20 absolute -inset-2 animate-pulse rounded-full blur-md" />
               <div className="from-primary via-secondary to-primary relative flex size-14 items-center justify-center overflow-hidden rounded-xl bg-linear-to-br text-white transition-all duration-500 hover:scale-110 hover:rotate-12">
                 <Image
-                  src={game.thumbnail}
+                  src={game.thumbnail?.src || game.thumbnail}
                   alt={game.game_name}
                   fill
                   className="object-cover"
@@ -359,7 +360,7 @@ const GameDetailsClient = ({ game }: Props) => {
               <div className="sticky top-8">
                 <div className="dark:bg-card-bg overflow-hidden rounded-3xl border-4 border-white bg-white shadow-sm dark:border-white/10">
                   <Image
-                    src={game.thumbnail}
+                    src={game.thumbnail?.src || game.thumbnail}
                     alt={game.game_name}
                     width={400}
                     height={400}
@@ -383,7 +384,7 @@ const GameDetailsClient = ({ game }: Props) => {
                 key={relatedGame.game_id}
                 title={relatedGame.game_name}
                 category={relatedGame.developer_team}
-                image={relatedGame.thumbnail}
+                image={relatedGame.thumbnail?.src || relatedGame.thumbnail}
                 href={allRoute.game(relatedGame.game_id)}
               />
             ))}

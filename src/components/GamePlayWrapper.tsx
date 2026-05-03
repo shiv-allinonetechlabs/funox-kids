@@ -7,14 +7,14 @@ import { useFullscreen } from '@/hooks/useFullscreen';
 import { useIsMobile } from '@/hooks/useMobileDetection';
 
 interface GamePlayWrapperProps {
-  gameId: string;
-  thumbnail?: string;
+  gameLink: string;
+  thumbnail?: any;
   gameName: string;
   containerRef: RefObject<HTMLDivElement | null>;
 }
 
 const GamePlayWrapper = ({
-  gameId,
+  gameLink,
   thumbnail,
   gameName,
   containerRef,
@@ -22,16 +22,19 @@ const GamePlayWrapper = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { isFullscreen, enterFullscreen } = useFullscreen(containerRef);
+  const [hasMounted, setHasMounted] = useState(false);
 
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    // On Desktop, start playing immediately
-    if (!isMobile) {
-      // Use setTimeout to avoid synchronous setState warning during mount
-      setTimeout(() => setIsPlaying(true), 0);
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasMounted && !isMobile) {
+      setIsPlaying(true);
     }
-  }, [isMobile]);
+  }, [hasMounted, isMobile]);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -51,10 +54,9 @@ const GamePlayWrapper = ({
           className="group relative h-full w-full cursor-pointer overflow-hidden"
           onClick={handlePlay}
         >
-          {/* Thumbnail Background with Parallax effect on hover */}
           {thumbnail ? (
             <Image
-              src={thumbnail}
+              src={thumbnail.src || thumbnail}
               alt={gameName}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -110,11 +112,11 @@ const GamePlayWrapper = ({
 
           <iframe
             title={gameName}
-            allow="autoplay; fullscreen; camera; focus-without-user-activation *;"
+            allow="autoplay; fullscreen; camera"
             className={`h-full w-full rounded-2xl transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setIsLoaded(true)}
             sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
-            src={`${process.env.NEXT_PUBLIC_FUNOX_BASE_URL}/${gameId}?tag=kids`}
+            src={gameLink}
           />
         </div>
       )}

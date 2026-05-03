@@ -20,11 +20,11 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-99 w-full px-4 pt-4 md:px-10 md:pt-6">
+    <header className="sticky top-0 z-99 w-full pt-4 md:pt-6">
       <div className="container">
         <div
           className={cn(
-            'border-glass-border bg-glass-bg flex items-center justify-between rounded-[32px] border-2 p-2 pr-2 pl-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500',
+            'border-glass-border bg-glass-bg flex items-center justify-between rounded-[32px] border-2 p-2 pr-3 pb-3.5 pl-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500',
             isScrolled ? 'shadow-primary/10 border-primary/10' : ''
           )}
         >
@@ -50,13 +50,11 @@ const Header = () => {
               </span>
             </span>
           </Link>
-
-          {/* Action Button Section */}
-          <div className="flex items-center">
-            <Link href="game/happy-slushie">
-              <Button variant="primary">PLAY NOW</Button>
-            </Link>
-          </div>
+          <Link href="/game/cake-shop">
+            <Button variant="primary" size="sm">
+              PLAY NOW
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

@@ -3,7 +3,7 @@ export const STATIC_PAGE_METADATA: Record<
   { title: string; description: string }
 > = {
   '/': {
-    title: 'Funox Kids | Safe & Free Games for Children',
+    title: 'Safe & Free Games for Children | Funox Kids',
     description:
       'Welcome to Funox Kids, the safest and most magical playground on the web! Play hundreds of free, super-fun games, puzzles, and adventures designed just for you.',
   },

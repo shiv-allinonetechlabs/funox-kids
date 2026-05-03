@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonicalUrl,
       images: [
         {
-          url: game.thumbnail,
+          url: (game.thumbnail?.src || game.thumbnail) as string,
           width: 1293,
           height: 807,
           alt: game.game_name,
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [game.thumbnail],
+      images: [(game.thumbnail?.src || game.thumbnail) as string],
     },
   };
 }
