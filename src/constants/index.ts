@@ -1,8 +1,3 @@
-export const SITE_NAME = 'Funox Kids';
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-export const SITE_MASK_ICON = './icon.png';
-
 import {
   imgAnimal_DayCare,
   imgBaby_DayCare,
@@ -13,8 +8,13 @@ import {
   imgDentist_Master,
   imgIce_Or_Fire_Dress,
   imgJigshow,
-  imgSweet_Momory
+  imgSweet_Momory,
 } from '../assets/images';
+
+export const SITE_NAME = 'Funox Kids';
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+export const SITE_MASK_ICON = './icon.png';
 
 export const gamesData = {
   game: {
